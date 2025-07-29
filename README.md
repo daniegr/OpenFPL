@@ -1,18 +1,21 @@
-<h1>
-  <img src="OpenFPL.png" alt="OpenFPL" width="100" style="vertical-align: middle; margin-right: 10px;">
-  OpenFPL
-</h1>
-<b>The accurate openly available forecasting method for Fantasy Premier League</b>
+<p align="center">
+  <img src="OpenFPL.png" alt="OpenFPL" width="150">
+</p>
 
-<hr>
+<h1 align="center">OpenFPL</h1>
+<p align="center"><b>The accurate openly available forecasting method for Fantasy Premier League</b></p>
 
-<i>Want to support this initiative?</i>
+---
 
-<a href="https://www.paypal.com/donate/?hosted_button_id=EKNGVA5RU2B96" target="_blank">
-  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="Support" style="height: 24px; margin-left: 8px;">
-</a>
+<p align="center"><em>Want to support this initiative?</em></p>
 
-<hr>
+<p align="center">
+  <a href="https://www.paypal.com/donate/?hosted_button_id=EKNGVA5RU2B96" target="_blank">
+    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="Donate with PayPal" height="24">
+  </a>
+</p>
+
+---
 
 ## Get started
 
