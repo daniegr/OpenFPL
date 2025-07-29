@@ -1,14 +1,18 @@
-<p style="display: flex; align-items: flex-start; margin: 0;">
-  <img src="OpenFPL.png" alt="OpenFPL" style="height: 4.5em; margin-right: 3px;">
-  <span style="font-size: 2em; font-weight: bold; line-height: 1; padding-top: 0.55em;">OpenFPL</span>
-</p><br>
+<h1>
+  <img src="OpenFPL.png" alt="OpenFPL" width="100" style="vertical-align: middle; margin-right: 10px;">
+  OpenFPL
+</h1>
 <b>The accurate openly available forecasting method for Fantasy Premier League</b>
-<hr><div>
-  <i>Want to support this initiative?</i>
-  <a href="https://www.paypal.com/donate/?hosted_button_id=EKNGVA5RU2B96" target="_blank">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="Support" style="height: 24px; margin-left: 5px; vertical-align: middle;">
-  </a>
-</div><hr>
+
+<hr>
+
+<i>Want to support this initiative?</i>
+
+<a href="https://www.paypal.com/donate/?hosted_button_id=EKNGVA5RU2B96" target="_blank">
+  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="Support" style="height: 24px; margin-left: 8px;">
+</a>
+
+<hr>
 
 ## Get started
 
@@ -35,6 +39,7 @@ Historical FPL and Understat data can be accessed by help of [FPL Historical Dat
 | :--  | --- | --- | --- | --- |
 | OpenFPL | 0.818 | 1.291 | <b>1.517</b> | <b>5.142</b> |
 | [FPL Review Massive Data Model](https://fplreview.com/) | <b>0.689</b> | <b>1.189</b> | 1.594 | 5.172 | 
+
 <sup>*</sup> *Zeros*: Non-playing and 0 FPL points, *Blanks*: ≤ 2 FPL points, *Tickers*: 3 or 4 FPL points, *Haulers*: ≥ 5 FPL points
 
 ## Resources
