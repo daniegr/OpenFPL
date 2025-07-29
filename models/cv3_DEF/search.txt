@@ -1,0 +1,1671 @@
+###############################################
+Candidate r1 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-5_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33533.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r2 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-2_minsamplesleaf-2_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33148.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r3 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-5 had error 2.32880.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r4 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-2_minsamplesleaf-5_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32848.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r5 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33456.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r6 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-2_minsamplesleaf-2_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33588.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r7 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33795.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r8 method-randforest_numestimators-400_maxdepth-20_minsamplessplit-2_minsamplesleaf-5_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33130.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r9 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0_reglambda-1 had error 2.32966.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r10 method-randforest_numestimators-200_maxdepth-None_minsamplessplit-2_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33805.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r11 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-2_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33109.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r12 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 had error 2.32658.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r13 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.69596.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r14 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.75_minchildweight-1_gamma-0_reglambda-1 had error 2.32878.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r15 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.32389.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r16 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32529.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r17 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33184.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r18 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.32366.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r19 method-xgboost_numestimators-300_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0_reglambda-1 had error 2.33023.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r20 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.15166.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r21 method-randforest_numestimators-200_maxdepth-None_minsamplessplit-5_minsamplesleaf-5_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32995.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r22 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-1 had error 2.32945.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r23 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-5 had error 2.32316.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r24 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-0.2_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32862.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r25 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 had error 2.32600.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r26 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0.1_reglambda-1 had error 2.32359.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r27 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-5_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32999.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r28 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33405.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r29 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-5 had error 2.32669.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r30 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32744.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r31 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.32546.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r32 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0_reglambda-5 had error 2.32353.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r33 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-2_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33087.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r34 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.72680.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r35 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-2_minsamplesleaf-2_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32726.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r36 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-2_minsamplesleaf-2_maxfeatures-0.2_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33111.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r37 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32906.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r38 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-1 had error 2.32306.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r39 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33708.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r40 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.32816.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r41 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-2_minsamplesleaf-5_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.12349.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r42 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-2_minsamplesleaf-5_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33085.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r43 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33456.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r44 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.33747.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r45 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.32745.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r46 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0_reglambda-1 had error 2.33023.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r47 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0_reglambda-1 had error 2.32838.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r48 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.75_minchildweight-1_gamma-0_reglambda-1 had error 2.33160.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r49 method-randforest_numestimators-400_maxdepth-20_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33328.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r50 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-5_minsamplesleaf-2_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33319.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r51 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.32366.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r52 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32851.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r53 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32749.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r54 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-1 had error 2.32554.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r55 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-2_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33339.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r56 method-xgboost_numestimators-300_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-5 had error 2.32557.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r57 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-2_minsamplesleaf-1_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33064.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r58 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-2_minsamplesleaf-1_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.22524.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r59 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33080.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r60 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33345.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r61 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-2_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33108.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r62 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32496.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r63 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-5_minsamplesleaf-2_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33339.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r64 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-1 had error 2.33267.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r65 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-2_minsamplesleaf-5_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32726.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r66 method-randforest_numestimators-400_maxdepth-20_minsamplessplit-5_minsamplesleaf-2_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33452.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r67 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-1 had error 2.32661.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r68 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 had error 2.32871.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r69 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 had error 2.33480.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r70 method-randforest_numestimators-200_maxdepth-None_minsamplessplit-2_minsamplesleaf-1_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.22834.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r71 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-5_minsamplesleaf-2_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33243.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r72 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 had error 2.33248.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r73 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33174.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r74 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33456.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r75 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-5_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33354.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r76 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33571.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r77 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-2_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33132.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r78 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-5_minsamplesleaf-2_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33769.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r79 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-1 had error 2.34619.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r80 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-5_minsamplesleaf-1_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.34291.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r81 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-1 had error 2.32883.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r82 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-5 had error 2.32739.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r83 method-xgboost_numestimators-300_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 had error 2.33133.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r84 method-randforest_numestimators-200_maxdepth-None_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33900.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r85 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.69542.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r86 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.33363.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r87 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-2_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.72804.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r88 method-xgboost_numestimators-300_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.33451.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r89 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-2_minsamplesleaf-5_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33257.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r90 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0_reglambda-5 had error 2.33063.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r91 method-xgboost_numestimators-600_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.32702.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r92 method-randforest_numestimators-800_maxdepth-None_minsamplessplit-5_minsamplesleaf-1_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33706.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r93 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33016.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r94 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-5_gamma-0_reglambda-1 had error 2.32899.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r95 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32484.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r96 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32750.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r97 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-2_minsamplesleaf-2_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33924.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r98 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.33053.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r99 method-randforest_numestimators-400_maxdepth-10_minsamplessplit-2_minsamplesleaf-1_maxfeatures-0.2_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32759.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r100 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 had error 2.33752.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r101 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32635.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r102 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-1 had error 2.33468.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r103 method-randforest_numestimators-800_maxdepth-20_minsamplessplit-5_minsamplesleaf-2_maxfeatures-sqrt_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33265.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r104 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-2_minsamplesleaf-1_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33064.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r105 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-1 had error 2.33159.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r106 method-xgboost_numestimators-300_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.33985.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+###############################################
+
+
+###############################################
+Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.32511.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r108 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.33134.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r109 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-1 had error 2.33234.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r110 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32981.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r111 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-2_minsamplesleaf-5_maxfeatures-0.2_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32628.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 had error 2.32431.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 3. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r113 method-randforest_numestimators-200_maxdepth-None_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.18574.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 3. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r114 method-randforest_numestimators-800_maxdepth-10_minsamplessplit-5_minsamplesleaf-1_maxfeatures-sqrt_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33239.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 3. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+###############################################
+
+
+###############################################
+Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32585.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 3. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 4. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32400.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r117 method-randforest_numestimators-200_maxdepth-20_minsamplessplit-5_minsamplesleaf-5_maxfeatures-0.2_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33410.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r118 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.32628.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r119 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 had error 2.32841.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r120 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 had error 2.33019.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r121 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.32768.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r122 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-2_minsamplesleaf-2_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.18612.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 had error 2.32537.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r124 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.33516.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r125 method-randforest_numestimators-400_maxdepth-None_minsamplessplit-5_minsamplesleaf-1_maxfeatures-1.0_bootstrap-False_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 3.22029.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 had error 2.32583.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 7. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r127 method-xgboost_numestimators-300_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-5_gamma-0.1_reglambda-5 had error 2.32803.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 7. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+###############################################
+
+
+###############################################
+Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 had error 2.32592.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 7. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 8. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r129 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 had error 2.33985.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 5. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 6. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 7. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 8. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 had error 2.32493.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 5. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 6. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 7. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 8. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 9. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r131 method-randforest_numestimators-400_maxdepth-20_minsamplessplit-5_minsamplesleaf-1_maxfeatures-0.2_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.33681.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 5. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 6. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 7. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 8. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 9. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r132 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.1_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.33619.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 5. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 6. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 7. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 8. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 9. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r133 method-randforest_numestimators-200_maxdepth-10_minsamplessplit-5_minsamplesleaf-5_maxfeatures-1.0_bootstrap-True_learningrate-None_subsample-None_colsamplebytree-None_minchildweight-None_gamma-None_reglambda-None had error 2.32726.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 5. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 6. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 7. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 8. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 9. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r134 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-5 had error 2.33323.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 4. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 5. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 6. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 7. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 8. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 9. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 had error 2.32408.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 3. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 4. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 5. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 6. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 7. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 8. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 9. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+ 10. Candidate r128 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32592.
+###############################################
+
+
+###############################################
+Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32272.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 3. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 4. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 5. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 6. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 7. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 8. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 9. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+ 10. Candidate r115 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-1 with error 2.32585.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32494.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 3. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 4. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 5. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 6. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 7. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 8. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 9. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+ 10. Candidate r126 method-xgboost_numestimators-600_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32583.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32427.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 3. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 4. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 5. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 6. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 7. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 8. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 9. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 10. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 4 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32721.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 3. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 4. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 5. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 6. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 7. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 8. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 9. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 10. Candidate r123 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32537.
+
+The temperature is 10 with 1 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 5 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-1 had error 2.32522.
+
+The best trial is candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+
+The population is:
+ 1. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 2. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 3. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 4. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 5. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 6. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 7. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 8. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 9. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+ 10. Candidate 5 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-1 with error 2.32522.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32115.
+
+The best trial is candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+
+The population is:
+ 1. Candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+ 2. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 3. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 4. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 5. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 6. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 7. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 8. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 9. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 10. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 7 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32988.
+
+The best trial is candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+
+The population is:
+ 1. Candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+ 2. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 3. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 4. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 5. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 6. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 7. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 8. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 9. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+ 10. Candidate r107 method-xgboost_numestimators-1200_maxdepth-3_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0_reglambda-5 with error 2.32511.
+
+The temperature is 10 with 1 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 8 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32410.
+
+The best trial is candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+
+The population is:
+ 1. Candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+ 2. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 3. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 4. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 5. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 6. Candidate 8 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32410.
+ 7. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 8. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 9. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+ 10. Candidate 2 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.5_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32494.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
+###############################################
+Candidate 9 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 had error 2.32272.
+
+The best trial is candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+
+The population is:
+ 1. Candidate 6 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32115.
+ 2. Candidate p3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.5_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32208.
+ 3. Candidate 1 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 4. Candidate 9 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32272.
+ 5. Candidate r116 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32400.
+ 6. Candidate r135 method-xgboost_numestimators-600_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.05_subsample-0.75_colsamplebytree-0.5_minchildweight-5_gamma-0.1_reglambda-1 with error 2.32408.
+ 7. Candidate 8 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-0.75_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32410.
+ 8. Candidate 3 method-xgboost_numestimators-1200_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.5_colsamplebytree-1.0_minchildweight-1_gamma-0.1_reglambda-5 with error 2.32427.
+ 9. Candidate r112 method-xgboost_numestimators-1200_maxdepth-7_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-1.0_colsamplebytree-0.5_minchildweight-1_gamma-0_reglambda-5 with error 2.32431.
+ 10. Candidate r130 method-xgboost_numestimators-300_maxdepth-5_minsamplessplit-None_minsamplesleaf-None_maxfeatures-None_bootstrap-None_learningrate-0.01_subsample-0.75_colsamplebytree-1.0_minchildweight-5_gamma-0_reglambda-5 with error 2.32493.
+
+The temperature is 10 with 0 unsuccessful trials
+###############################################
+
+
