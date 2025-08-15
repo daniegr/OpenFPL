@@ -29,7 +29,7 @@ Open and run *play.ipynb* for OpenFPL predictions on sample data
 
 ## Custom data
 
-To use OpenFPL on custom data, you need to construct samples based on data from FPL and Understat APIs (see *data/samples.csv* and [paper](https://arxiv.org/abs/2507.XXXXX) for inspiration):
+To use OpenFPL on custom data, you need to construct samples based on data from FPL and Understat APIs (see *data/samples.csv* and [paper](https://arxiv.org/abs/2508.09992) for inspiration):
 
 - [FPL API](https://fantasy.premierleague.com/api/bootstrap-static/)
 - [Understat API](https://understat.com/league/EPL/)
@@ -47,7 +47,7 @@ Historical FPL and Understat data can be accessed by help of [FPL Historical Dat
 
 ## Resources
 
-- Scientific paper - [OpenFPL: An open-source forecasting method rivaling state-of-the-art Fantasy Premier League services](https://arxiv.org/abs/2507.XXXXX)
+- Scientific paper - [OpenFPL: An open-source forecasting method rivaling state-of-the-art Fantasy Premier League services](https://arxiv.org/abs/2508.09992)
 - Model search framework - [*K*-Best Search](https://github.com/daniegr/KBestSearch)
 
 ## Citation
