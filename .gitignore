@@ -205,3 +205,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# fpl_engine local pipeline artefacts (regenerated from free sources)
+data/fpl.sqlite
+data/fpl.sqlite-wal
+data/fpl.sqlite-shm
+data/cache/
+data/predictions_gw*.csv
+data/samples_gw*.csv

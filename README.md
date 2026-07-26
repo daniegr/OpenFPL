@@ -36,6 +36,34 @@ To use OpenFPL on custom data, you need to construct samples based on data from 
 
 Historical FPL and Understat data can be accessed by help of [FPL Historical Dataset](https://github.com/vaastav/Fantasy-Premier-League)
 
+## Automatic data pipeline (`fpl_engine`)
+
+Instead of hand-building `samples.csv`, the `fpl_engine/` package **pulls the
+data automatically, for free, into a simple local SQLite database** and builds
+the OpenFPL feature samples point-in-time, so predictions run end-to-end.
+
+- **Store:** one SQLite file (`data/fpl.sqlite`) — no server, no cloud, no keys.
+- **Free sources, no auth:** the official [FPL API](https://fantasy.premierleague.com/api/bootstrap-static/),
+  the [vaastav historical dataset](https://github.com/vaastav/Fantasy-Premier-League)
+  (so early-season form carries over from last season), and — when reachable —
+  [Understat](https://understat.com/) advanced stats. If Understat is
+  unavailable the pipeline degrades gracefully to FPL-only features.
+
+```bash
+pip install -r requirements-pipeline.txt
+
+python -m fpl_engine pull            # FPL live + historical backfill -> SQLite
+python -m fpl_engine predict --gw 1  # build point-in-time samples + run OpenFPL
+python -m fpl_engine run  --gw 1     # pull + build + predict in one command
+```
+
+The pipeline is verified end-to-end: the canonical scoring engine reconciles
+100% of 2024-25 player-gameweek points; the feature builder reproduces the
+FPL-sourced columns of `data/samples.csv`; and the predictor reproduces
+`data/predictions.csv` exactly. See `CLAUDE.md` for architecture and the
+engineering principles (point-in-time discipline, single scoring source, etc.),
+and run `python -m pytest tests/ -q`.
+
 ## Head-to-head evaluation with state-of-the-art commercial method
 
 | Method | RMSE<sub>Zeros*</sub> | RMSE<sub>Blanks*</sub> | RMSE<sub>Tickers*</sub> | RMSE<sub>Haulers*</sub> |

@@ -1,0 +1,51 @@
+# Canonical FPL scoring rules — single source of truth for fpl_engine.
+# Version this file whenever the official rules change (FPL revises rules most
+# summers). No scoring constant may live anywhere else in the codebase.
+#
+# Verify against the official rules page before each season:
+#   https://fantasy.premierleague.com/help/rules
+version: "2026-27"
+
+appearance:
+  played_any: 1        # points for playing at all (1-59 minutes)
+  played_60: 2         # points for playing 60+ minutes (replaces played_any)
+
+goal:                   # points per goal scored, by position
+  GK: 6
+  DEF: 6
+  MID: 5
+  FWD: 4
+
+assist: 3               # points per assist (any position)
+
+clean_sheet:            # requires 60+ minutes played
+  GK: 4
+  DEF: 4
+  MID: 1
+  FWD: 0
+
+saves_per_point: 3      # 1 point per this many saves (GK)
+penalty_save: 5
+penalty_miss: -2
+
+goals_conceded:         # points per this many goals conceded (GK/DEF only)
+  per: 2
+  points: -1
+
+card:
+  yellow: -1
+  red: -3
+
+own_goal: -2
+
+# Defensive Contribution (DefCon), retained unchanged for 2026-27.
+# Threshold-crossing event: award `points` once combined defensive actions
+# reach `threshold`. Verify exact thresholds against the official rules page.
+defensive_contribution:
+  points: 2
+  threshold:
+    DEF: 10            # clearances + blocks + interceptions + tackles
+    MID: 12            # + ball recoveries
+    FWD: 12
+
+# Bonus is added as-is from the (reworked for 2026-27) Bonus Points System.

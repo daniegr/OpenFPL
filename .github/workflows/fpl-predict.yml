@@ -1,0 +1,45 @@
+# Free, scheduled OpenFPL predictions.
+#
+# Pulls FPL data automatically into a local SQLite DB and produces predictions
+# for the next gameweek as a downloadable artifact. Runs on GitHub's free tier;
+# no secrets or paid services required. Trigger manually via the Actions tab, or
+# let the weekly cron run it.
+name: FPL predict
+
+on:
+  workflow_dispatch:
+    inputs:
+      gw:
+        description: "Gameweek to predict"
+        required: true
+        default: "1"
+  schedule:
+    - cron: "0 8 * * 4"   # Thursdays 08:00 UTC (ahead of typical Fri/Sat deadlines)
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r plug.txt -r requirements-pipeline.txt
+
+      - name: Pull data (free sources) into SQLite
+        run: python -m fpl_engine pull
+
+      - name: Predict
+        run: |
+          GW="${{ github.event.inputs.gw || '1' }}"
+          python -m fpl_engine predict --gw "$GW" --out data/predictions_next.csv
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fpl-predictions
+          path: data/predictions_next.csv
