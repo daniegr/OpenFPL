@@ -18,7 +18,8 @@ from .. import config, features, predict as predict_mod
 
 
 def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
-                        decay: float = 0.85) -> pd.DataFrame:
+                        decay: float = 0.85, retrained=None,
+                        blend: float = 0.0) -> pd.DataFrame:
     """Return a projection dataframe indexed by player_id.
 
     Columns: player_id, player, position, team, team_id, price, available,
@@ -41,7 +42,8 @@ def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
             df = features.build_samples(conn, season, g, include_ids=True)
         except ValueError:
             continue  # gw not scheduled
-        preds = predict_mod.predict(df, bundle=bundle)
+        preds = predict_mod.predict(df, bundle=bundle, retrained=retrained,
+                                    blend=blend)
         preds = preds.reset_index(drop=True)
         # align predictions to player_id via the id column carried on df
         # (predict preserves row order within each position block, so join by

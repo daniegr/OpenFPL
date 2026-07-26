@@ -64,11 +64,26 @@ def cmd_build(args):
         print(f"Wrote {args.out}")
 
 
+def cmd_train(args):
+    from . import train
+    db.init_db(args.db)
+    with db.session(args.db) as conn:
+        meta = train.train(conn, seasons=args.seasons or None,
+                           valid_season=args.valid_season, gw_step=args.gw_step,
+                           device=args.device)
+    print("Retraining complete. Forward-in-time validation "
+          f"(held-out {meta['valid_season']}), device={meta['device']}:")
+    for pos, m in meta["metrics"].items():
+        print(f"  {pos}: {m}")
+    print(f"\nSaved to {train.RETRAINED_DIR}. Use it via --blend, e.g. "
+          f"`predict --gw 1 --blend auto`.")
+
+
 def cmd_predict(args):
     from .pipeline import predict_gw
     db.init_db(args.db)
     with db.session(args.db) as conn:
-        preds = predict_gw(conn, args.gw, season=args.season)
+        preds = predict_gw(conn, args.gw, season=args.season, blend=args.blend)
     _print_df(preds, args.top)
     if args.out:
         preds.to_csv(args.out, index=False)
@@ -85,7 +100,7 @@ def cmd_optimise(args):
             conn, entry_id=entry, season=args.season, horizon=args.horizon,
             budget=args.budget, decay=args.decay,
             max_transfers_per_gw=args.max_transfers, time_limit=args.time_limit,
-            use_cache=args.cache)
+            use_cache=args.cache, blend=args.blend)
     plan = result["plan"]
     print(f"Entry {result['entry_id']} | mode: {result['mode']} | "
           f"horizon GW{result['gws'][0]}–{result['gws'][-1]}")
@@ -145,10 +160,20 @@ def main(argv=None):
     sp.add_argument("--out", help="write samples CSV")
     sp.set_defaults(func=cmd_build)
 
+    sp = sub.add_parser("train", help="retrain per-position models on the feature store (GPU-aware)")
+    sp.add_argument("--seasons", nargs="*", help="seasons to train on (default backfill set)")
+    sp.add_argument("--valid-season", help="held-out season for forward validation")
+    sp.add_argument("--gw-step", type=int, default=1,
+                    help="subsample gameweeks for a faster run (e.g. 2)")
+    sp.add_argument("--device", help="cuda | cpu (default: auto-detect)")
+    sp.set_defaults(func=cmd_train)
+
     sp = sub.add_parser("predict", help="end-to-end predictions for a gw")
     sp.add_argument("--gw", type=int, required=True)
     sp.add_argument("--top", type=int, default=40, help="rows to print")
     sp.add_argument("--out", help="write predictions CSV")
+    sp.add_argument("--blend", default=None,
+                    help="blend retrained model: 'auto', or a weight 0..1 (needs `train` first)")
     sp.set_defaults(func=cmd_predict)
 
     sp = sub.add_parser("optimise", help="suggest transfers / build a squad for an FPL entry")
@@ -161,6 +186,8 @@ def main(argv=None):
                     help="cap transfers per gameweek (bounds the search)")
     sp.add_argument("--time-limit", type=int, default=40, help="solver seconds")
     sp.add_argument("--cache", action="store_true")
+    sp.add_argument("--blend", default=None,
+                    help="blend retrained model: 'auto', or a weight 0..1 (needs `train` first)")
     sp.set_defaults(func=cmd_optimise)
 
     sp = sub.add_parser("run", help="pull + build + predict")

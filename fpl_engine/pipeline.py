@@ -51,11 +51,30 @@ def build(conn, gw: int, *, season: str | None = None, store: bool = True) -> pd
     return df
 
 
-def predict_gw(conn, gw: int, *, season: str | None = None,
-               bundle=None) -> pd.DataFrame:
+def resolve_blend(conn, season: str, blend):
+    """Resolve a --blend argument into (retrained_models_or_None, weight).
+
+    ``blend`` may be None/0 (pure OpenFPL), 'auto' (weight from season progress),
+    or a float in [0,1]. Returns (None, 0.0) if no retrained models exist.
+    """
+    if blend in (None, 0, 0.0, "0"):
+        return None, 0.0
+    from . import train
+    retrained = train.load_retrained()
+    if retrained is None:
+        return None, 0.0
+    weight = (train.season_blend_weight(conn, season) if blend == "auto"
+              else float(blend))
+    return retrained, weight
+
+
+def predict_gw(conn, gw: int, *, season: str | None = None, bundle=None,
+               blend=None) -> pd.DataFrame:
     """End-to-end: build point-in-time samples for the gw and run OpenFPL."""
+    season = season or config.CURRENT_SEASON
     df = build(conn, gw, season=season, store=True)
-    preds = predict_mod.predict(df, bundle=bundle)
+    retrained, weight = resolve_blend(conn, season, blend)
+    preds = predict_mod.predict(df, bundle=bundle, retrained=retrained, blend=weight)
     return preds.sort_values("prediction", ascending=False).reset_index(drop=True)
 
 
@@ -97,7 +116,7 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
                    horizon: int = 5, budget: float = 100.0, bundle=None,
                    decay: float = 0.85, max_transfers_per_gw: int = 3,
                    keep_per_position: int = 30, time_limit: int = 40,
-                   use_cache: bool = False) -> dict:
+                   use_cache: bool = False, blend=None) -> dict:
     """End-to-end squad optimisation for an FPL entry id.
 
     Fetches the manager's current squad (or None pre-season), projects points
@@ -121,8 +140,12 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
     progress.step(f"Planning horizon GW{gws[0]}–GW{gws[-1]}")
 
     bundle = bundle or predict_mod.load_models()
+    retrained, weight = resolve_blend(conn, season, blend)
+    if weight > 0:
+        progress.step(f"Blending retrained model (weight {weight:.2f})")
     progress.step(f"Projecting points for {len(gws)} gameweeks…")
-    proj = project.horizon_projections(conn, season, gws, bundle=bundle, decay=decay)
+    proj = project.horizon_projections(conn, season, gws, bundle=bundle,
+                                       decay=decay, retrained=retrained, blend=weight)
 
     progress.step(f"Fetching entry {entry_id}…")
     squad_state = manager.current_squad(entry_id, use_cache=use_cache)

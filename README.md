@@ -77,6 +77,28 @@ per club and legal formations. **If no squad exists yet** (pre-season, before
 the first deadline) it builds an optimal squad from £100m — the initial pick is
 free. The entry id defaults to `883566`.
 
+### Adapting to new results (form + optional retraining)
+
+The projections react to recent matches automatically: re-run `pull` after a
+gameweek and the new matches flow into the trailing-form features, so the next
+`predict`/`optimise` reflects current form — no retraining needed.
+
+To also let the model **relearn its weights** (useful as the new-season rules
+bed in), retrain and blend — GPU-accelerated when one is present:
+
+```bash
+python -m fpl_engine train                        # refit on the feature store
+python -m fpl_engine predict  --gw 1  --blend auto # blend fresh + OpenFPL
+python -m fpl_engine optimise --entry 883566 --blend auto
+```
+
+`train` refits position-specific XGBoost models **strictly forward-in-time**
+(features never see future matches; the latest season is held out for
+validation and reported as stratified RMSE), reusing OpenFPL's scaler and
+feature space so predictions blend cleanly. `--blend auto` weights the retrained
+model up as the season progresses; `--blend 0` (the default) is pure OpenFPL.
+GPU is auto-detected (`--device cuda|cpu`, or `$FPL_DEVICE`).
+
 The pipeline is verified end-to-end: the canonical scoring engine reconciles
 100% of 2024-25 player-gameweek points; the feature builder reproduces the
 FPL-sourced columns of `data/samples.csv`; and the predictor reproduces

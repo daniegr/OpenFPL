@@ -42,10 +42,18 @@ def load_models(models_dir: str | None = None):
     return models, xscaler, yscaler, features
 
 
-def predict(samples_df: pd.DataFrame, bundle=None) -> pd.DataFrame:
-    """Return a dataframe of metadata + ensemble ``prediction`` per player."""
+def predict(samples_df: pd.DataFrame, bundle=None, *, retrained=None,
+            blend: float = 0.0) -> pd.DataFrame:
+    """Return a dataframe of metadata + ensemble ``prediction`` per player.
+
+    If ``retrained`` (per-position models from ``train.load_retrained``) is given
+    and ``blend`` > 0, the final prediction is
+    ``(1-blend) * OpenFPL + blend * retrained``. With ``blend`` = 0 (default) the
+    output is exactly the original OpenFPL ensemble.
+    """
     models, xscaler, yscaler, features = bundle or load_models()
     xfeatures = list(xscaler.feature_names_in_)
+    blend = 0.0 if not retrained else float(blend)
 
     out = pd.DataFrame(columns=_METADATA + ["prediction"])
     for pos in _POSITIONS:
@@ -66,6 +74,11 @@ def predict(samples_df: pd.DataFrame, bundle=None) -> pd.DataFrame:
                 p = yscaler.inverse_transform(p.reshape(-1, 1)).reshape(-1)
                 preds.append(p)
         ensemble = np.median(preds, axis=0)
+
+        if blend > 0 and pos in retrained:
+            fresh = retrained[pos].predict(scaled)
+            ensemble = (1.0 - blend) * ensemble + blend * fresh
+
         block = pos_df[_METADATA].copy()
         block["prediction"] = ensemble
         out = pd.concat([out, block], ignore_index=True)

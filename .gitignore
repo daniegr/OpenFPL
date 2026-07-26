@@ -213,3 +213,6 @@ data/fpl.sqlite-shm
 data/cache/
 data/predictions_gw*.csv
 data/samples_gw*.csv
+
+# Retrained models (regenerated locally via `fpl_engine train`)
+models/retrained/
