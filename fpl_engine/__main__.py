@@ -54,6 +54,7 @@ def cmd_backfill(args):
 
 def cmd_build(args):
     from .pipeline import build
+    db.init_db(args.db)
     with db.session(args.db) as conn:
         df = build(conn, args.gw, season=args.season, store=not args.no_store)
     print(f"Built {len(df)} samples for {args.season or config.CURRENT_SEASON} "
@@ -65,6 +66,7 @@ def cmd_build(args):
 
 def cmd_predict(args):
     from .pipeline import predict_gw
+    db.init_db(args.db)
     with db.session(args.db) as conn:
         preds = predict_gw(conn, args.gw, season=args.season)
     _print_df(preds, args.top)
@@ -77,6 +79,7 @@ def cmd_optimise(args):
     from .pipeline import optimise_squad
     from .manager import DEFAULT_ENTRY
     entry = args.entry if args.entry is not None else DEFAULT_ENTRY
+    db.init_db(args.db)
     with db.session(args.db) as conn:
         result = optimise_squad(
             conn, entry_id=entry, season=args.season, horizon=args.horizon,

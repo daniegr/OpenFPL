@@ -194,10 +194,35 @@ def connect(db_path: str | None = None) -> sqlite3.Connection:
     return conn
 
 
+# Columns added after the initial schema. init_db() adds any that are missing so
+# a database created by an earlier version self-heals without a full re-pull.
+_COLUMN_MIGRATIONS = {
+    "player": [
+        ("now_cost", "REAL"),
+        ("status", "TEXT"),
+        ("chance_next", "REAL"),
+    ],
+}
+
+
+def _ensure_columns(conn: sqlite3.Connection) -> None:
+    for table, cols in _COLUMN_MIGRATIONS.items():
+        existing = {r["name"] for r in conn.execute(f"PRAGMA table_info({table})")}
+        for name, decl in cols:
+            if name not in existing:
+                conn.execute(f"ALTER TABLE {table} ADD COLUMN {name} {decl}")
+
+
 def init_db(db_path: str | None = None) -> None:
-    """Create all tables if they do not yet exist."""
+    """Create all tables if they do not yet exist and apply column migrations.
+
+    Idempotent: safe to call at the start of every command. Brings a database
+    created by an earlier schema version up to date (new tables via
+    ``CREATE TABLE IF NOT EXISTS``, new columns via ``ALTER TABLE``).
+    """
     with connect(db_path) as conn:
         conn.executescript(SCHEMA)
+        _ensure_columns(conn)
         conn.commit()
 
 

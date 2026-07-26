@@ -59,6 +59,27 @@ def predict_gw(conn, gw: int, *, season: str | None = None,
     return preds.sort_values("prediction", ascending=False).reset_index(drop=True)
 
 
+def _require_data(conn, season: str) -> None:
+    """Fail with a helpful message if the database has not been populated yet."""
+    n_players = conn.execute(
+        "SELECT COUNT(*) FROM player WHERE season=?", (season,)).fetchone()[0]
+    n_fixtures = conn.execute(
+        "SELECT COUNT(*) FROM fixture WHERE season=?", (season,)).fetchone()[0]
+    if not n_players or not n_fixtures:
+        raise SystemExit(
+            f"No {season} data in the database yet.\n"
+            f"Pull the free data first:\n"
+            f"    python -m fpl_engine pull\n"
+            f"then re-run the optimiser.")
+    n_priced = conn.execute(
+        "SELECT COUNT(*) FROM player WHERE season=? AND now_cost IS NOT NULL",
+        (season,)).fetchone()[0]
+    if not n_priced:
+        raise SystemExit(
+            f"{season} players have no prices (database predates a schema "
+            f"update). Refresh it:\n    python -m fpl_engine pull")
+
+
 def next_gw(conn, season: str) -> int:
     """The next unfinished gameweek that has scheduled fixtures."""
     row = conn.execute(
@@ -87,6 +108,7 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
     from .optimise import milp, project
 
     season = season or config.CURRENT_SEASON
+    _require_data(conn, season)
     from .resolve import resolve_teams
     resolve_teams(conn, season)
 
