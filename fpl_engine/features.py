@@ -212,8 +212,13 @@ def _availability(conn, season, player_id) -> float:
 
 
 def build_samples(conn, season: str, gw: int, *, as_of: str | None = None,
-                  positions: tuple[str, ...] = ("GK", "DEF", "MID", "FWD")) -> pd.DataFrame:
-    """Build the OpenFPL samples dataframe for (season, gw)."""
+                  positions: tuple[str, ...] = ("GK", "DEF", "MID", "FWD"),
+                  include_ids: bool = False) -> pd.DataFrame:
+    """Build the OpenFPL samples dataframe for (season, gw).
+
+    With ``include_ids=True`` an extra ``player_id`` column is appended (ignored
+    by the model but used to join projections back to prices/ownership).
+    """
     as_of = as_of or gw_as_of(conn, season, gw)
     if as_of is None:
         raise ValueError(f"No fixtures/kickoff found for {season} GW{gw}")
@@ -244,6 +249,7 @@ def build_samples(conn, season: str, gw: int, *, as_of: str | None = None,
             "season": season, "gw": gw, "position": p["position"],
             "player": p["full_name"], "team": team.get("name"),
             "opponent": opp.get("name"), "home": bool(is_home),
+            "_player_id": p["player_id"],
         }
 
         # --- player history (FPL + Understat) ---
@@ -288,8 +294,12 @@ def build_samples(conn, season: str, gw: int, *, as_of: str | None = None,
         records.append(rec)
 
     df = pd.DataFrame(records)
+    ids = df["_player_id"] if "_player_id" in df.columns else None
     # Guarantee exact column set/order (fills any gap with NaN).
-    return df.reindex(columns=config.sample_columns())
+    out = df.reindex(columns=config.sample_columns())
+    if include_ids and ids is not None:
+        out["player_id"] = ids.values
+    return out
 
 
 def _emit(rec: dict, base: str, means: dict[int, float]) -> None:

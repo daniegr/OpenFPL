@@ -57,3 +57,94 @@ def predict_gw(conn, gw: int, *, season: str | None = None,
     df = build(conn, gw, season=season, store=True)
     preds = predict_mod.predict(df, bundle=bundle)
     return preds.sort_values("prediction", ascending=False).reset_index(drop=True)
+
+
+def next_gw(conn, season: str) -> int:
+    """The next unfinished gameweek that has scheduled fixtures."""
+    row = conn.execute(
+        "SELECT MIN(gw) g FROM fixture WHERE season=? AND finished=0 AND gw IS NOT NULL",
+        (season,)).fetchone()
+    if row and row["g"]:
+        return int(row["g"])
+    row = conn.execute(
+        "SELECT MIN(gw) g FROM fixture WHERE season=? AND gw IS NOT NULL",
+        (season,)).fetchone()
+    return int(row["g"]) if row and row["g"] else 1
+
+
+def optimise_squad(conn, *, entry_id: int, season: str | None = None,
+                   horizon: int = 5, budget: float = 100.0, bundle=None,
+                   decay: float = 0.85, max_transfers_per_gw: int = 3,
+                   keep_per_position: int = 30, time_limit: int = 40,
+                   use_cache: bool = False) -> dict:
+    """End-to-end squad optimisation for an FPL entry id.
+
+    Fetches the manager's current squad (or None pre-season), projects points
+    across the horizon, and runs the MILP — suggesting transfers/hits, or
+    building a fresh squad from budget when no squad exists yet.
+    """
+    from . import manager
+    from .optimise import milp, project
+
+    season = season or config.CURRENT_SEASON
+    from .resolve import resolve_teams
+    resolve_teams(conn, season)
+
+    start = next_gw(conn, season)
+    scheduled = [r["gw"] for r in conn.execute(
+        "SELECT DISTINCT gw FROM fixture WHERE season=? AND gw>=? AND gw IS NOT NULL "
+        "ORDER BY gw", (season, start))]
+    gws = scheduled[:horizon] or [start]
+
+    bundle = bundle or predict_mod.load_models()
+    proj = project.horizon_projections(conn, season, gws, bundle=bundle, decay=decay)
+
+    squad_state = manager.current_squad(entry_id, use_cache=use_cache)
+    if squad_state is None:
+        proj_p = project.prune(proj, keep_per_position=keep_per_position)
+        plan = milp.build_from_scratch(
+            proj_p, gws, budget=budget, decay=decay,
+            max_transfers_per_gw=max_transfers_per_gw, time_limit=time_limit)
+        mode = "build-from-scratch"
+        state = {"bank": budget, "free_transfers": None}
+    else:
+        owned = {p["element"]: p["selling_price"] for p in squad_state["squad"]}
+        proj = _ensure_players(conn, season, proj, owned, gws)
+        proj_p = project.prune(proj, keep_per_position=keep_per_position,
+                               must_keep=set(owned))
+        plan = milp.optimise(
+            proj_p, gws, initial=owned, bank=squad_state["bank"],
+            free_transfers=squad_state["free_transfers"], budget=budget,
+            decay=decay, max_transfers_per_gw=max_transfers_per_gw,
+            time_limit=time_limit)
+        mode = "optimise-transfers"
+        state = {"bank": squad_state["bank"],
+                 "free_transfers": squad_state["free_transfers"],
+                 "manager": squad_state.get("name")}
+
+    return {"mode": mode, "entry_id": entry_id, "gws": gws, "state": state,
+            "plan": plan}
+
+
+def _ensure_players(conn, season, proj, owned, gws):
+    """Guarantee every owned player has a projection row (ep 0 if unprojectable)."""
+    have = set(proj["player_id"])
+    missing = [pid for pid in owned if pid not in have]
+    if not missing:
+        return proj
+    rows = []
+    for pid in missing:
+        r = conn.execute(
+            "SELECT p.player_id, p.full_name, p.position, p.team_id, p.now_cost, "
+            "t.name team FROM player p LEFT JOIN team t "
+            "ON p.season=t.season AND p.team_id=t.team_id "
+            "WHERE p.season=? AND p.player_id=?", (season, pid)).fetchone()
+        if not r:
+            continue
+        row = {"player_id": pid, "player": r["full_name"], "position": r["position"],
+               "team_id": r["team_id"], "team": r["team"],
+               "price": r["now_cost"] or 0.0, "available": 0.0, "ep_total": 0.0}
+        for g in gws:
+            row[f"ep_gw{g}"] = 0.0
+        rows.append(row)
+    return pd.concat([proj, pd.DataFrame(rows)], ignore_index=True) if rows else proj

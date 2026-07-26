@@ -61,6 +61,10 @@ def ingest_bootstrap(conn, season: str | None = None, *, use_cache: bool = False
             "team_id": e.get("team"),
             "position": config.ELEMENT_TYPE_TO_POSITION.get(e.get("element_type")),
             "understat_id": None,
+            "now_cost": (e.get("now_cost") or 0) / 10.0,  # tenths of £m -> £m
+            "status": e.get("status"),
+            "chance_next": (e["chance_of_playing_next_round"] / 100.0
+                            if e.get("chance_of_playing_next_round") is not None else None),
         })
     db.upsert(conn, "player", players)
     return boot

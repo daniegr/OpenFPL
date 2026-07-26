@@ -10,4 +10,5 @@ PyYAML>=6.0         # scoring rules
 joblib>=1.3         # load OpenFPL model artefacts
 scikit-learn>=1.5   # scalers bundled with OpenFPL
 xgboost>=3.0        # OpenFPL ensemble members
+pulp>=2.7           # multi-period squad optimiser (bundled CBC solver, free)
 pytest>=7.0         # tests

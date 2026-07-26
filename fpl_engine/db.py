@@ -55,6 +55,9 @@ CREATE TABLE IF NOT EXISTS player (
     team_id     INTEGER,
     position    TEXT,                    -- GK/DEF/MID/FWD
     understat_id TEXT,                   -- resolved Understat player id
+    now_cost    REAL,                    -- current price in £m (e.g. 5.5)
+    status      TEXT,                    -- FPL availability code (a/d/i/s/u)
+    chance_next REAL,                    -- chance of playing next round in [0,1]
     PRIMARY KEY (season, player_id)
 );
 CREATE INDEX IF NOT EXISTS ix_player_code ON player(code);

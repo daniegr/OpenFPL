@@ -29,6 +29,9 @@ Free sources ─▶ ingest ─▶ SQLite ─▶ features (point-in-time) ─▶ 
 | `fpl_engine/scoring.py` | canonical FPL points calculator (YAML-driven) |
 | `fpl_engine/features.py` | point-in-time 228-feature builder (exact OpenFPL columns) |
 | `fpl_engine/predict.py` | OpenFPL ensemble inference (refactor of `play.ipynb`) |
+| `fpl_engine/manager.py` | fetch an FPL entry (squad id): current squad, bank, FTs |
+| `fpl_engine/optimise/project.py` | per-player projections across the horizon |
+| `fpl_engine/optimise/milp.py` | multi-period squad/transfer/captain optimiser (PuLP+CBC) |
 | `fpl_engine/pipeline.py` / `__main__.py` | orchestration + CLI |
 
 ## Non-negotiable engineering principles
@@ -47,6 +50,20 @@ Free sources ─▶ ingest ─▶ SQLite ─▶ features (point-in-time) ─▶ 
 6. **No hardcoded scoring constants** outside the YAML rules file.
 
 Current scoring rules: `config/scoring_rules_2026_27.yaml` (version `2026-27`).
+
+## Optimiser
+
+`optimise/milp.py` is a multi-period mixed-integer program (PuLP + bundled CBC,
+free) over a rolling horizon. It jointly chooses squad, starting XI, captain and
+transfers per gameweek to maximise **discounted expected points net of the -4
+hit cost**. Free transfers accrue (+1/gw, bankable to 5) and are modelled
+explicitly, so the model decides whether a hit is worth it (a transfer is taken
+only when its marginal XI gain over the displaced/benched player beats 4 points).
+Constraints enforced as hard: £100m budget with the bank recursion, 2/5/5/3
+squad, ≤3 per club, legal XI formation. Given an entry (squad) id it suggests
+transfers from the current team; with no team yet (pre-season) it builds a fresh
+squad from budget (initial selection is free). Default entry: `883566`.
+Projections use current form applied to each horizon gameweek's fixture.
 
 ## Must stay green
 
@@ -75,7 +92,8 @@ Run: `python -m pytest tests/ -q`
 ```
 python -m fpl_engine init-db
 python -m fpl_engine pull            # FPL live + vaastav backfill -> SQLite (free)
-python -m fpl_engine predict --gw 1  # end-to-end predictions
-python -m fpl_engine run --gw 1      # pull + build + predict
+python -m fpl_engine predict --gw 1        # end-to-end predictions
+python -m fpl_engine run --gw 1            # pull + build + predict
+python -m fpl_engine optimise --entry 883566 --horizon 5   # transfers / squad
 python -m pytest tests/ -q
 ```

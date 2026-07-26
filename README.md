@@ -57,6 +57,26 @@ python -m fpl_engine predict --gw 1  # build point-in-time samples + run OpenFPL
 python -m fpl_engine run  --gw 1     # pull + build + predict in one command
 ```
 
+### Squad optimiser (transfers, captaincy, chips-ready)
+
+Give it your **FPL squad id** (from your team URL,
+`fantasy.premierleague.com/en/entry/<id>/`) and it fetches your current team and
+recommends moves over a multi-gameweek horizon:
+
+```bash
+python -m fpl_engine optimise --entry 883566 --horizon 5
+```
+
+A multi-period mixed-integer optimiser (PuLP + the free bundled CBC solver)
+chooses squad, starting XI, captain and transfers to maximise discounted
+expected points **net of the -4 point hit** for transfers beyond your free
+allowance. It models free-transfer accrual (bankable up to 5) and therefore
+decides for itself whether a hit is worth taking. It respects every FPL rule:
+£100m budget with correct bank/selling-price accounting, 2/5/5/3 squad, max 3
+per club and legal formations. **If no squad exists yet** (pre-season, before
+the first deadline) it builds an optimal squad from £100m — the initial pick is
+free. The entry id defaults to `883566`.
+
 The pipeline is verified end-to-end: the canonical scoring engine reconciles
 100% of 2024-25 player-gameweek points; the feature builder reproduces the
 FPL-sourced columns of `data/samples.csv`; and the predictor reproduces

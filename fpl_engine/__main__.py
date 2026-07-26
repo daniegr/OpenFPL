@@ -73,6 +73,33 @@ def cmd_predict(args):
         print(f"Wrote {args.out}")
 
 
+def cmd_optimise(args):
+    from .pipeline import optimise_squad
+    from .manager import DEFAULT_ENTRY
+    entry = args.entry if args.entry is not None else DEFAULT_ENTRY
+    with db.session(args.db) as conn:
+        result = optimise_squad(
+            conn, entry_id=entry, season=args.season, horizon=args.horizon,
+            budget=args.budget, decay=args.decay,
+            max_transfers_per_gw=args.max_transfers, time_limit=args.time_limit,
+            use_cache=args.cache)
+    plan = result["plan"]
+    print(f"Entry {result['entry_id']} | mode: {result['mode']} | "
+          f"horizon GW{result['gws'][0]}–{result['gws'][-1]}")
+    print(f"State: {result['state']}")
+    print("=" * 64)
+    print(plan.summary())
+    print("=" * 64)
+    first = plan.per_gw[0]
+    print(f"\nRecommended squad for GW{first['gw']} "
+          f"(captain: {first['captain']}):")
+    for pos in ("GK", "DEF", "MID", "FWD"):
+        line = [f"{n}{'*' if n in first['xi'] else ''} ({e})"
+                for n, pp, e in first["squad"] if pp == pos]
+        print(f"  {pos}: " + ", ".join(line))
+    print("  (* = starting XI)")
+
+
 def cmd_run(args):
     from .pipeline import pull, predict_gw
     with db.session(args.db) as conn:
@@ -120,6 +147,18 @@ def main(argv=None):
     sp.add_argument("--top", type=int, default=40, help="rows to print")
     sp.add_argument("--out", help="write predictions CSV")
     sp.set_defaults(func=cmd_predict)
+
+    sp = sub.add_parser("optimise", help="suggest transfers / build a squad for an FPL entry")
+    sp.add_argument("--entry", type=int, default=None,
+                    help="FPL entry (squad) id; defaults to 883566")
+    sp.add_argument("--horizon", type=int, default=5, help="gameweeks to plan over")
+    sp.add_argument("--budget", type=float, default=100.0)
+    sp.add_argument("--decay", type=float, default=0.85)
+    sp.add_argument("--max-transfers", type=int, default=3,
+                    help="cap transfers per gameweek (bounds the search)")
+    sp.add_argument("--time-limit", type=int, default=40, help="solver seconds")
+    sp.add_argument("--cache", action="store_true")
+    sp.set_defaults(func=cmd_optimise)
 
     sp = sub.add_parser("run", help="pull + build + predict")
     sp.add_argument("--gw", type=int, required=True)

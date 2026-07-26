@@ -13,6 +13,10 @@ on:
         description: "Gameweek to predict"
         required: true
         default: "1"
+      entry:
+        description: "FPL entry (squad) id to optimise"
+        required: false
+        default: "883566"
   schedule:
     - cron: "0 8 * * 4"   # Thursdays 08:00 UTC (ahead of typical Fri/Sat deadlines)
 
@@ -39,7 +43,15 @@ jobs:
           GW="${{ github.event.inputs.gw || '1' }}"
           python -m fpl_engine predict --gw "$GW" --out data/predictions_next.csv
 
+      - name: Optimise squad / transfers
+        run: |
+          ENTRY="${{ github.event.inputs.entry || '883566' }}"
+          python -m fpl_engine optimise --entry "$ENTRY" --horizon 5 \
+            | tee data/optimise_plan.txt
+
       - uses: actions/upload-artifact@v4
         with:
           name: fpl-predictions
-          path: data/predictions_next.csv
+          path: |
+            data/predictions_next.csv
+            data/optimise_plan.txt
