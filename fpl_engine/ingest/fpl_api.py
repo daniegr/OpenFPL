@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import json
 
-from .. import config, db
+from .. import config, db, progress
 from ..http import get_text, utcnow_iso
 
 BASE = "https://fantasy.premierleague.com/api"
@@ -122,9 +122,14 @@ def ingest_current_season_history(conn, season: str | None = None, *,
     if limit is not None:
         elements = elements[:limit]
 
+    total = len(elements)
+    progress.step(f"Fetching per-player history for {total} players "
+                  f"(polite rate-limited; ~{max(1, total * 6 // 100 // 6)} min)…")
     written = 0
-    for e in elements:
+    for i, e in enumerate(elements, 1):
         pid = e["id"]
+        if i % 25 == 0 or i == total:
+            progress.log(f"    …{i}/{total} players ({written} match rows)")
         try:
             summ = fetch_element_summary(pid, use_cache=use_cache)
         except Exception:
@@ -172,11 +177,21 @@ def ingest_all(conn, season: str | None = None, *, use_cache: bool = False,
                history: bool = True, history_limit: int | None = None) -> dict:
     """Full FPL pull: bootstrap + fixtures (+ per-player history)."""
     season = season or config.CURRENT_SEASON
+    progress.step(f"Fetching bootstrap (players, teams, prices) for {season}…")
     boot = ingest_bootstrap(conn, season, use_cache=use_cache)
+    progress.step("Fetching fixtures…")
     ingest_fixtures(conn, season, use_cache=use_cache)
+
+    # Skip the slow per-player history fetch when no matches have been played
+    # (pre-season): element-summary returns empty history for everyone.
+    finished = any(ev.get("finished") for ev in boot.get("events", []))
     n = 0
-    if history:
+    if history and not finished:
+        progress.step("Pre-season: no matches played yet — skipping per-player "
+                      "history (form comes from the historical backfill).")
+    elif history:
         n = ingest_current_season_history(conn, season, boot=boot,
                                           use_cache=use_cache, limit=history_limit)
+        progress.step(f"Per-player history done ({n} rows).")
     return {"players": len(boot["elements"]), "teams": len(boot["teams"]),
             "history_rows": n}

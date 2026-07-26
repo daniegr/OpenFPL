@@ -33,8 +33,10 @@ def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
     team_name = {r["team_id"]: r["name"] for r in conn.execute(
         "SELECT team_id, name FROM team WHERE season=?", (season,))}
 
+    from .. import progress
     ep_by_gw: dict[int, dict[int, float]] = {}
     for g in gws:
+        progress.log(f"    projecting GW{g}…")
         try:
             df = features.build_samples(conn, season, g, include_ids=True)
         except ValueError:

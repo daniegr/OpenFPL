@@ -21,6 +21,8 @@ _METADATA = ["season", "gw", "position", "player", "team", "opponent", "home"]
 
 def load_models(models_dir: str | None = None):
     """Load the OpenFPL ensembles, scalers and per-position feature lists."""
+    from . import progress
+    progress.step("Loading OpenFPL models (this takes a few seconds)…")
     models_dir = models_dir or config.MODELS_DIR
     models = {cv: {pos: [] for pos in _POSITIONS} for cv in range(1, _NUM_CVS + 1)}
     for cv in models:

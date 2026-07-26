@@ -107,6 +107,7 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
     from . import manager
     from .optimise import milp, project
 
+    from . import progress
     season = season or config.CURRENT_SEASON
     _require_data(conn, season)
     from .resolve import resolve_teams
@@ -117,12 +118,17 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
         "SELECT DISTINCT gw FROM fixture WHERE season=? AND gw>=? AND gw IS NOT NULL "
         "ORDER BY gw", (season, start))]
     gws = scheduled[:horizon] or [start]
+    progress.step(f"Planning horizon GW{gws[0]}–GW{gws[-1]}")
 
     bundle = bundle or predict_mod.load_models()
+    progress.step(f"Projecting points for {len(gws)} gameweeks…")
     proj = project.horizon_projections(conn, season, gws, bundle=bundle, decay=decay)
 
+    progress.step(f"Fetching entry {entry_id}…")
     squad_state = manager.current_squad(entry_id, use_cache=use_cache)
     if squad_state is None:
+        progress.step("No existing squad found — building a fresh squad from "
+                      f"£{budget:.0f}m. Solving optimiser…")
         proj_p = project.prune(proj, keep_per_position=keep_per_position)
         plan = milp.build_from_scratch(
             proj_p, gws, budget=budget, decay=decay,
@@ -130,6 +136,8 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
         mode = "build-from-scratch"
         state = {"bank": budget, "free_transfers": None}
     else:
+        progress.step(f"Squad found ({squad_state['free_transfers']} FT, "
+                      f"£{squad_state['bank']:.1f}m bank). Solving optimiser…")
         owned = {p["element"]: p["selling_price"] for p in squad_state["squad"]}
         proj = _ensure_players(conn, season, proj, owned, gws)
         proj_p = project.prune(proj, keep_per_position=keep_per_position,

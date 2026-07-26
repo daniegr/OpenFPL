@@ -14,7 +14,7 @@ from __future__ import annotations
 import csv
 import io
 
-from .. import config, db
+from .. import config, db, progress
 from ..http import get_text, utcnow_iso
 
 RAW = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data"
@@ -128,8 +128,14 @@ def ingest_seasons(conn, seasons: list[str] | None = None, *,
     seasons = seasons or config.BACKFILL_SEASONS
     out = []
     for s in seasons:
+        progress.step(f"Backfilling historical season {s} (downloading free "
+                      f"vaastav data)…")
         try:
-            out.append(ingest_season(conn, s, use_cache=use_cache))
+            res = ingest_season(conn, s, use_cache=use_cache)
+            progress.log(f"    {s}: {res['player_gw_rows']} player-gw rows, "
+                         f"{res['team_matches']} team matches")
+            out.append(res)
         except Exception as e:  # noqa: BLE001 - a missing season should not abort
+            progress.log(f"    {s}: skipped ({e})")
             out.append({"season": s, "error": str(e)})
     return out
