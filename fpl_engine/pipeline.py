@@ -14,10 +14,15 @@ from .ingest import fpl_api, understat, vaastav
 def pull(conn, *, season: str | None = None, use_cache: bool = False,
          history: bool = True, backfill: bool = True,
          with_understat: bool = False) -> dict:
-    """Pull all free data into SQLite: FPL live (+history), vaastav backfill."""
+    """Pull all free data into SQLite: FPL live (+history), vaastav backfill.
+
+    ``use_cache`` applies ONLY to the static historical backfill (safe to cache
+    across runs). Live FPL data (bootstrap, fixtures, current-season history) is
+    ALWAYS fetched fresh so a scheduled run genuinely updates the data.
+    """
     season = season or config.CURRENT_SEASON
     summary = {"season": season}
-    summary["fpl"] = fpl_api.ingest_all(conn, season, use_cache=use_cache,
+    summary["fpl"] = fpl_api.ingest_all(conn, season, use_cache=False,
                                         history=history)
     if backfill:
         summary["backfill"] = vaastav.ingest_seasons(conn, use_cache=use_cache)

@@ -80,10 +80,12 @@ def cmd_train(args):
 
 
 def cmd_predict(args):
-    from .pipeline import predict_gw
+    from .pipeline import next_gw, predict_gw
     db.init_db(args.db)
     with db.session(args.db) as conn:
-        preds = predict_gw(conn, args.gw, season=args.season, blend=args.blend)
+        gw = args.gw if args.gw is not None else next_gw(
+            conn, args.season or config.CURRENT_SEASON)
+        preds = predict_gw(conn, gw, season=args.season, blend=args.blend)
     _print_df(preds, args.top)
     if args.out:
         preds.to_csv(args.out, index=False)
@@ -143,7 +145,8 @@ def main(argv=None):
     sp.set_defaults(func=cmd_init_db)
 
     sp = sub.add_parser("pull", help="pull FPL live + historical into SQLite")
-    sp.add_argument("--cache", action="store_true", help="use cached HTTP responses")
+    sp.add_argument("--cache", action="store_true",
+                    help="cache the static historical backfill (live data stays fresh)")
     sp.add_argument("--no-history", action="store_true", help="skip per-player history")
     sp.add_argument("--no-backfill", action="store_true", help="skip vaastav backfill")
     sp.add_argument("--understat", action="store_true", help="also pull Understat if available")
@@ -169,7 +172,8 @@ def main(argv=None):
     sp.set_defaults(func=cmd_train)
 
     sp = sub.add_parser("predict", help="end-to-end predictions for a gw")
-    sp.add_argument("--gw", type=int, required=True)
+    sp.add_argument("--gw", type=int, default=None,
+                    help="gameweek (default: next scheduled)")
     sp.add_argument("--top", type=int, default=40, help="rows to print")
     sp.add_argument("--out", help="write predictions CSV")
     sp.add_argument("--blend", default=None,

@@ -1,27 +1,35 @@
-# Free, scheduled OpenFPL predictions.
+# Free, scheduled FPL refresh: update data -> retrain -> predict -> optimise.
 #
-# Pulls FPL data automatically into a local SQLite DB and produces predictions
-# for the next gameweek as a downloadable artifact. Runs on GitHub's free tier;
-# no secrets or paid services required. Trigger manually via the Actions tab, or
-# let the weekly cron run it.
-name: FPL predict
+# Every run pulls the latest FPL data into a local SQLite DB, retrains the
+# per-position models on it (forward-in-time), and produces blended predictions
+# and a transfer plan as downloadable artifacts. Runs on GitHub's free tier; no
+# secrets or paid services required. Trigger manually via the Actions tab, or let
+# the cron run it. (CI runners are CPU-only; training auto-uses a GPU when one is
+# available, e.g. on a self-hosted runner.)
+name: FPL refresh
 
 on:
   workflow_dispatch:
     inputs:
       gw:
-        description: "Gameweek to predict"
-        required: true
-        default: "1"
+        description: "Gameweek to predict (blank = next)"
+        required: false
+        default: ""
       entry:
         description: "FPL entry (squad) id to optimise"
         required: false
         default: "883566"
+      blend:
+        description: "Retrained blend: auto, 0, or a weight 0..1"
+        required: false
+        default: "auto"
   schedule:
-    - cron: "0 8 * * 4"   # Thursdays 08:00 UTC (ahead of typical Fri/Sat deadlines)
+    # Twice weekly so the data + models stay current around deadlines.
+    - cron: "0 8 * * 4"   # Thu 08:00 UTC — early planning
+    - cron: "0 9 * * 6"   # Sat 09:00 UTC — capture late team news
 
 jobs:
-  predict:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,23 +43,39 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r plug.txt -r requirements-pipeline.txt
 
-      - name: Pull data (free sources) into SQLite
-        run: python -m fpl_engine pull
+      # Persist only the static historical backfill (HTTP cache) between runs so
+      # it isn't re-downloaded each time. Live FPL data is always fetched fresh.
+      - name: Restore historical-data cache
+        uses: actions/cache@v4
+        with:
+          path: data/cache
+          key: fpl-hist-${{ github.run_id }}
+          restore-keys: fpl-hist-
 
-      - name: Predict
+      - name: Update data (fresh live + cached history) into SQLite
+        run: python -m fpl_engine pull --cache
+
+      - name: Retrain per-position models (forward-in-time)
+        run: python -m fpl_engine train
+
+      - name: Predict (next gameweek, blended)
         run: |
-          GW="${{ github.event.inputs.gw || '1' }}"
-          python -m fpl_engine predict --gw "$GW" --out data/predictions_next.csv
+          BLEND="${{ github.event.inputs.blend || 'auto' }}"
+          GW_ARG=""
+          if [ -n "${{ github.event.inputs.gw }}" ]; then GW_ARG="--gw ${{ github.event.inputs.gw }}"; fi
+          python -m fpl_engine predict $GW_ARG --blend "$BLEND" --out data/predictions_next.csv
 
-      - name: Optimise squad / transfers
+      - name: Optimise squad / transfers (blended)
         run: |
           ENTRY="${{ github.event.inputs.entry || '883566' }}"
-          python -m fpl_engine optimise --entry "$ENTRY" --horizon 5 \
+          BLEND="${{ github.event.inputs.blend || 'auto' }}"
+          python -m fpl_engine optimise --entry "$ENTRY" --horizon 5 --blend "$BLEND" \
             | tee data/optimise_plan.txt
 
       - uses: actions/upload-artifact@v4
         with:
-          name: fpl-predictions
+          name: fpl-refresh
           path: |
             data/predictions_next.csv
             data/optimise_plan.txt
+            models/retrained/meta.json
