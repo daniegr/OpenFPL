@@ -216,3 +216,9 @@ data/samples_gw*.csv
 
 # Retrained models (regenerated locally via `fpl_engine train`)
 models/retrained/
+
+# web app
+web/node_modules/
+app/static/
+data/web_cache/
+app/saved_teams/

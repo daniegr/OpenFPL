@@ -89,9 +89,9 @@ def optimise(proj: pd.DataFrame, gws: list[int], *,
     prev = {pid: (0 if scratch else (1 if pid in initial else 0)) for pid in ids}
     sell = {pid: (initial.get(pid, price[pid]) if not scratch else price[pid])
             for pid in ids}
-    start_bank = budget if scratch else bank + sum(sell[p] for p in ids if prev[p])
-    # (for existing squad, total spending power = squad sale value + bank; the
-    #  per-gw bank recursion below keeps it consistent)
+    start_bank = budget if scratch else bank
+    # (existing squad: only actual bank is spendable; kept players' value is
+    #  locked in. The per-gw recursion adds sells and subtracts buys.)
 
     T = list(range(len(gws)))
     prob = pulp.LpProblem("fpl", pulp.LpMaximize)

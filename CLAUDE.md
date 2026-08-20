@@ -109,6 +109,26 @@ Run: `python -m pytest tests/ -q`
 * **League-rank / status-rank** columns are AM-only in OpenFPL and left NaN for
   player rows (matching the reference samples).
 
+## Web app (FPL Review-style planner)
+
+`app/` (FastAPI backend) + `web/` (React/Vite frontend) serve a local planner
+UI on **http://127.0.0.1:8410** with four tabs: Planner (pitch + drafts),
+Projections (per-GW model output table), Fixtures (FDR heatmap) and Solver
+(chip-aware optimisation via `fpl_engine/optimise/chips.py` — a superset of
+`milp.py` adding WC/FH/BB/TC chips, target/avoid/ban constraints and N
+alternative plans; `milp.py` itself stays untouched).
+
+```
+python -m app                      # serve the built site (needs app/static)
+cd web && npm install && npm run build   # rebuild frontend -> app/static
+cd web && npm run dev              # frontend dev server (proxies /api to 8410)
+```
+
+Projections are cached per (season, gw) in `data/web_cache/projections.json`
+(invalidated by a data pull); drafts persist in `data/web_cache/drafts.json`.
+A solve builds any missing projection gameweeks first, so the first solve of a
+session is slow (model inference per GW) and later ones are fast.
+
 ## Commands
 
 ```
