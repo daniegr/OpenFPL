@@ -1,3 +1,7 @@
+// must match app/services.py API_VERSION — mismatch means the running
+// `python -m app` predates this build and needs a restart
+export const API_VERSION = '2026-08-21.4'
+
 const j = async (r) => {
   if (!r.ok) {
     let msg = `${r.status}`
@@ -12,6 +16,7 @@ export const api = {
   players: () => fetch('/api/players').then(j),
   fixtures: () => fetch('/api/fixtures').then(j),
   projections: () => fetch('/api/projections').then(j),
+  projectionHistory: () => fetch('/api/projections/history').then(j),
   buildProjections: (gws, force = false) =>
     fetch('/api/projections/build', {
       method: 'POST',
@@ -20,6 +25,13 @@ export const api = {
     }).then(j),
   pull: () => fetch('/api/pull', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }).then(j),
   entry: (id) => fetch(`/api/entry/${id}`).then(j),
+  league: (id, { gw, limit } = {}) => {
+    const q = new URLSearchParams()
+    if (gw) q.set('gw', gw)
+    if (limit) q.set('limit', limit)
+    const qs = q.toString()
+    return fetch(`/api/league/${id}${qs ? `?${qs}` : ''}`).then(j)
+  },
   solve: (params) =>
     fetch('/api/solve', {
       method: 'POST',
@@ -35,6 +47,12 @@ export const api = {
       body: JSON.stringify(doc),
     }).then(j),
   clearMyTeam: () => fetch('/api/myteam', { method: 'DELETE' }).then(j),
+  pasteMyTeam: (entry, payload) =>
+    fetch('/api/myteam/paste', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ entry, payload }),
+    }).then(j),
   importMyTeam: (entry, cookie) =>
     fetch('/api/myteam/import', {
       method: 'POST',

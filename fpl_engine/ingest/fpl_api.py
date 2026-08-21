@@ -47,7 +47,8 @@ def ingest_bootstrap(conn, season: str | None = None, *, use_cache: bool = False
 
     db.upsert(conn, "team", [{
         "season": season, "team_id": t["id"], "name": t["name"],
-        "short_name": t.get("short_name"), "understat_name": None,
+        "short_name": t.get("short_name"), "code": t.get("code"),
+        "understat_name": None,
     } for t in boot["teams"]])
 
     players = []
@@ -126,6 +127,7 @@ def ingest_current_season_history(conn, season: str | None = None, *,
     progress.step(f"Fetching per-player history for {total} players "
                   f"(polite rate-limited; ~{max(1, total * 6 // 100 // 6)} min)…")
     written = 0
+    team_xg: dict[tuple, float] = {}     # (team_id, fixture_id) -> sum player xG
     for i, e in enumerate(elements, 1):
         pid = e["id"]
         if i % 25 == 0 or i == total:
@@ -140,8 +142,24 @@ def ingest_current_season_history(conn, season: str | None = None, *,
             fx = fixtures.get(h.get("fixture"))
             rows.append(_history_row(season, pid, code_by_id.get(pid),
                                      name_by_id.get(pid), h, fx))
+        for row in rows:
+            if row["xg"] is not None and row["team_id"] is not None:
+                k = (row["team_id"], row["fixture_id"])
+                team_xg[k] = team_xg.get(k, 0.0) + row["xg"]
         written += db.upsert(conn, "player_gw", rows)
+    _update_team_xg(conn, season, team_xg, fixtures)
     return written
+
+
+def _update_team_xg(conn, season, team_xg, fixtures) -> None:
+    """Team xG/xGA per match from summed player xG (xGA = opponent's xG)."""
+    for (team_id, fid), xg in team_xg.items():
+        fx = fixtures.get(fid) or {}
+        opp = fx.get("team_a") if fx.get("team_h") == team_id else fx.get("team_h")
+        xga = team_xg.get((opp, fid))
+        conn.execute(
+            "UPDATE team_match SET xg=?, xga=? WHERE season=? AND team_id=? "
+            "AND fixture_id=?", (xg, xga, season, team_id, fid))
 
 
 def _history_row(season, pid, code, name, h, fx) -> dict:
@@ -163,6 +181,10 @@ def _history_row(season, pid, code, name, h, fx) -> dict:
         "bonus": h.get("bonus"), "bps": h.get("bps"),
         "influence": _f(h.get("influence")), "creativity": _f(h.get("creativity")),
         "threat": _f(h.get("threat")), "starts": h.get("starts"),
+        # FPL's own (Opta) expected stats — the free stand-in for Understat
+        "xg": _f(h.get("expected_goals")), "xa": _f(h.get("expected_assists")),
+        "xgi": _f(h.get("expected_goal_involvements")),
+        "xgc": _f(h.get("expected_goals_conceded")),
     }
 
 

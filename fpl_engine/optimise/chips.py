@@ -75,6 +75,7 @@ def optimise_with_chips(
     forced_out: dict[int, list[int]] | None = None,
     min_ft: dict[int, int] | None = None,
     n_plans: int = 1,
+    unlimited_first: bool = False,
     on_progress=None,
 ) -> list[ChipPlan]:
     """Solve the chip-aware plan; return up to ``n_plans`` alternatives.
@@ -83,8 +84,13 @@ def optimise_with_chips(
     empty = chip unavailable). ``chip_force`` pins a chip to a gameweek.
     ``forced_in``/``forced_out`` map gw -> player_ids that must move that gw.
     ``min_ft`` maps gw -> minimum banked FTs to hold *after* that gw's moves.
+    ``unlimited_first`` models the pre-GW1-deadline state: the first gw's
+    transfers are free (no hits, no FTs consumed, any number of moves) and
+    the FT stock resets to 1 afterwards — like a scratch build, but from an
+    existing squad so the plan still reads as transfers.
     """
     scratch = initial is None
+    free0 = scratch or unlimited_first     # first gw's moves are free
     P = proj.reset_index(drop=True)
     ids = list(P["player_id"])
     pos = dict(zip(P["player_id"], P["position"]))
@@ -235,14 +241,15 @@ def optimise_with_chips(
     # --- transfer counts, hits, free-transfer stock ---
     for t in T:
         nt = pulp.lpSum(tin[p][t] for p in ids)
-        cap_n = SQUAD_SIZE if (scratch and t == 0) else max_transfers_per_gw
+        cap_n = SQUAD_SIZE if (free0 and t == 0) else max_transfers_per_gw
         prob += nt <= cap_n + SQUAD_SIZE * wc[t]      # WC lifts the per-gw cap
         prob += fused[t] <= nt
         prob += fused[t] <= ftv[t]
         # WC/FH weeks consume no FTs and cost no hits
         prob += fused[t] <= SQUAD_SIZE * (1 - wc[t] - fh[t]) + 0
-        if scratch and t == 0:
-            # building the initial 15 is free: no hits, no FTs consumed
+        if free0 and t == 0:
+            # building the initial 15 / pre-deadline moves are free: no hits,
+            # no FTs consumed
             prob += paid[t] == 0
             prob += fused[t] == 0
         else:
@@ -250,7 +257,7 @@ def optimise_with_chips(
         # FT stock recursion
         if t == 0:
             prob += ftv[t] == (1 if scratch else free_transfers)
-        elif scratch and t == 1:
+        elif free0 and t == 1:
             prob += ftv[t] == 1
         else:
             prob += ftv[t] <= ftv[t - 1] - fused[t - 1] + 1

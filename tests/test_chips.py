@@ -142,3 +142,26 @@ def test_alternative_plans_differ():
     assert sig(plans[0]) != sig(plans[1]) or plans[0].per_gw[0]["chip"] != \
         plans[1].per_gw[0]["chip"]
     assert plans[0].objective >= plans[1].objective - 1e-6
+
+
+def test_unlimited_first_makes_first_gw_moves_free():
+    """Pre-GW1 deadline: any number of first-gw moves, no hits, FTs reset."""
+    pool = _pool()
+    owned = _owned(pool)
+    pool["ep_gw2"] = 3.0                      # no incentive to move in GW2
+    # one cheap must-have per outfield position that we don't own yet
+    targets = []
+    for pos in ("DEF", "MID", "FWD"):
+        cand = pool[(pool.position == pos) & ~pool.player_id.isin(owned)]
+        targets.append(int(cand.iloc[0].player_id))
+    pool.loc[pool.player_id.isin(targets), "ep_gw1"] = 30.0
+    pool.loc[pool.player_id.isin(targets), "price"] = 4.0
+    kw = dict(initial=owned, bank=0.0, free_transfers=1, ft_value=0.0,
+              max_transfers_per_gw=3, time_limit=20)
+    base = chips.optimise_with_chips(pool, [1, 2], **kw)[0]
+    unl = chips.optimise_with_chips(pool, [1, 2], unlimited_first=True, **kw)[0]
+    assert len(base.per_gw[0]["transfers_in"]) == 3
+    assert base.per_gw[0]["hits"] > 0           # 3 moves on 1 FT normally costs hits
+    assert len(unl.per_gw[0]["transfers_in"]) == 3
+    assert unl.per_gw[0]["hits"] == 0           # pre-deadline moves are free
+    assert unl.per_gw[1]["free_after"] <= 1     # nothing banks into GW2

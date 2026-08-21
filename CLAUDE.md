@@ -103,9 +103,27 @@ Run: `python -m pytest tests/ -q`
 * **`player relevant fpl points`** (5 columns): OpenFPL's exact definition is
   not reconstructable from this repo's artefacts, so a documented best-effort
   (`total_points - appearance_points`) is used. All other FPL columns match.
-* **Understat features** are NaN when Understat is unreachable (bot protection);
-  the models tolerate this via `np.nan_to_num`. This is the design's sanctioned
-  "degrade gracefully to FPL-only" path.
+* **Understat** is ingested from its JSON endpoints (`getLeagueData/{league}/{year}`
+  for every club's per-match xG/xGA/deep/PPDA in one call, `getPlayerData/{id}`
+  for a player's per-match log across all seasons, `main/getPlayersStats/` for
+  ids/names used in resolution; all need `X-Requested-With: XMLHttpRequest`).
+  `pull --understat` (the web Data button has it on) covers the current and
+  previous season; current-season players are fetched live, the rest cached.
+  Understat features are NaN when it is unreachable; the models tolerate this
+  via `np.nan_to_num`. To limit the damage, FPL's own (Opta) expected stats —
+  stored per match in `player_gw.xg/xa/xgi/xgc` and `team_match.xg/xga` (team
+  xG = summed player xG, xGA = opponent's) — stand in for the Understat
+  metrics they map onto (`player xg/xa`, `team/opponent xg/xga`) whenever the
+  Understat history is empty. Understat data takes precedence when present.
+  Shots, key passes, xGChain/xGBuildup, deep and PPDA have no FPL equivalent
+  and stay NaN.
+* **Expected minutes** (`fpl_engine/minutes.py`) scale EP relative to the
+  trailing-minutes baseline the features encode; across a season break a fit
+  player is never down-weighted on stale absences (pre-season factor is in
+  `[avail, 1.15·avail]`).
+* **Clubs with no top-flight match log** (promoted) borrow a pooled prior from
+  the previous season's relegated clubs for team/opponent features instead of
+  NaN→0; clubs are matched across seasons by FPL's stable `team.code`.
 * **League-rank / status-rank** columns are AM-only in OpenFPL and left NaN for
   player rows (matching the reference samples).
 

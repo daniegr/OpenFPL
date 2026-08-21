@@ -9,6 +9,7 @@ import pandas as pd
 
 from . import config, db, features, predict as predict_mod
 from .ingest import fpl_api, understat, vaastav
+from . import progress
 
 
 def pull(conn, *, season: str | None = None, use_cache: bool = False,
@@ -33,17 +34,98 @@ def pull(conn, *, season: str | None = None, use_cache: bool = False,
     return summary
 
 
-def _pull_understat(conn, season: str, *, use_cache: bool) -> dict:
-    from .resolve import resolve_teams
+def _needs_refresh(us_latest: str | None, fpl_latest: str | None) -> bool:
+    """Re-fetch a player's Understat log only if FPL shows he has played a
+    match newer than the latest Understat match we hold (or we hold none).
+    Pre-season that is nobody; in-season it is the players who featured."""
+    if not us_latest:
+        return True
+    if not fpl_latest:
+        return False
+    return str(fpl_latest)[:10] > str(us_latest)[:10]
+
+
+def _pull_understat(conn, season: str, *, use_cache: bool,
+                    history_seasons: int = 1, player_limit: int | None = None,
+                    refresh_all: bool = False, workers: int = 2) -> dict:
+    """Understat pull: club stats for the current + ``history_seasons`` previous
+    seasons (one request each), FPL<->Understat player resolution from the
+    season player lists, then per-player match logs (all seasons in one call).
+
+    Player logs are pulled *incrementally*: only players whose FPL match log
+    has a newer match than their latest Understat row (see ``_needs_refresh``)
+    unless ``refresh_all``. Fetches run on a small thread pool (the per-host
+    throttle in ``http`` still spaces request starts); rows are written and
+    committed from this thread every 25 players so progress persists.
+    """
+    from .resolve import resolve_players, resolve_teams
     resolve_teams(conn, season)
-    teams = conn.execute(
-        "SELECT understat_name FROM team WHERE season=? AND understat_name IS NOT NULL",
-        (season,)).fetchall()
+    year = understat.season_to_year(season)
+    seasons = [understat.year_to_season(y)
+               for y in range(year - history_seasons, year + 1)]
+    team_rows = 0
+    names: dict[str, str] = {}
+    clubs: dict[str, str] = {}
+    titles: set[str] = set()
+    current_ids: set[str] = set()
+    for s_ in seasons:
+        live = s_ == season
+        progress.step(f"Understat: club match stats {s_}…")
+        data = understat.league_data(s_, use_cache=use_cache and not live)
+        if data:
+            titles |= {t.get("title") for t in (data.get("teams") or {}).values()
+                       if t.get("title")}
+            team_rows += understat.ingest_league_teams(conn, s_,
+                                                       use_cache=use_cache and not live)
+        for pl in understat.fetch_league_players(s_, use_cache=use_cache and not live):
+            names[str(pl.get("id"))] = pl.get("player_name")
+            if pl.get("team_title"):
+                clubs[str(pl.get("id"))] = pl["team_title"]   # latest season wins
+            if live:
+                current_ids.add(str(pl.get("id")))
+    res = resolve_players(conn, season, names, understat_teams=clubs)
+    progress.step(f"Understat: {len(res['resolved'])} players resolved, "
+                  f"{len(res['unresolved'])} unresolved, "
+                  f"{len(res['ambiguous'])} ambiguous (features stay NaN for those).")
+    rows_ = conn.execute(
+        "SELECT p.understat_id AS uid, "
+        "       (SELECT MAX(g.kickoff_utc) FROM player_gw g "
+        "         WHERE g.player_code = p.code AND g.minutes > 0) AS fpl_latest, "
+        "       (SELECT MAX(u.match_date) FROM understat_player_match u "
+        "         WHERE u.understat_id = p.understat_id) AS us_latest "
+        "FROM player p WHERE p.season=? AND p.understat_id IS NOT NULL "
+        "ORDER BY p.player_id", (season,)).fetchall()
+    all_uids = [r["uid"] for r in rows_]
+    uids = [r["uid"] for r in rows_
+            if refresh_all or _needs_refresh(r["us_latest"], r["fpl_latest"])]
+    if player_limit is not None:
+        uids = uids[:player_limit]
+    total = len(uids)
+    progress.step(f"Understat: {total}/{len(all_uids)} player logs need a refresh "
+                  f"(~{max(1, round(total * 3 / 60))} min)…")
     n = 0
-    for t in teams:
-        n += understat.ingest_team_season(conn, season, t["understat_name"],
-                                          use_cache=use_cache)
-    return {"team_match_rows": n}
+    if total:
+        from concurrent.futures import ThreadPoolExecutor
+
+        def _fetch(uid):
+            live = uid in current_ids
+            return uid, understat.fetch_player_matches(
+                uid, use_cache=use_cache and not live)
+
+        with ThreadPoolExecutor(max_workers=max(1, workers)) as ex:
+            for i, (uid, matches) in enumerate(ex.map(_fetch, uids), 1):
+                if matches:
+                    n += db.upsert(conn, "understat_player_match",
+                                   understat.player_rows_from_matches(
+                                       uid, matches, epl_titles=titles or None))
+                if i % 25 == 0 or i == total:
+                    conn.commit()   # keep partial progress if interrupted
+                    progress.log(f"    …{i}/{total} players ({n} match rows)")
+    return {"seasons": seasons, "team_match_rows": team_rows,
+            "player_logs_refreshed": total, "player_match_rows": n,
+            "players_resolved": len(res["resolved"]),
+            "players_unresolved": len(res["unresolved"]),
+            "players_ambiguous": len(res["ambiguous"])}
 
 
 def build(conn, gw: int, *, season: str | None = None, store: bool = True) -> pd.DataFrame:

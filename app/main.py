@@ -54,6 +54,11 @@ def projections():
     return services.projections_payload()
 
 
+@app.get("/api/projections/history")
+def projections_history():
+    return services.projection_history_payload()
+
+
 @app.post("/api/projections/build")
 def projections_build(body: dict):
     gws = body.get("gws")
@@ -72,13 +77,22 @@ def pull(body: dict | None = None):
     if jobs.running():
         raise HTTPException(409, "another job is already running")
     job_id = jobs.start("pull", services.run_pull,
-                        bool((body or {}).get("understat")))
+                        bool((body or {}).get("understat", True)))
     return {"job_id": job_id}
 
 
 @app.get("/api/entry/{entry_id}")
 def entry(entry_id: int):
     return services.entry_payload(entry_id)
+
+
+@app.get("/api/league/{league_id}")
+def league(league_id: int, gw: int | None = None, limit: int = 20):
+    try:
+        return services.league_payload(league_id, gw=gw,
+                                       limit=max(2, min(50, limit)))
+    except Exception as exc:
+        raise HTTPException(400, f"league fetch failed: {exc}")
 
 
 # --- my team (pre-deadline squads are private to the public API) ----------
@@ -101,6 +115,18 @@ def myteam_put(body: dict):
 def myteam_delete():
     services.save_my_team(None)
     return {"squad": None}
+
+
+@app.post("/api/myteam/paste")
+def myteam_paste(body: dict):
+    """Squad pasted from the OpenFPL bookmarklet (no cookie involved)."""
+    payload = body.get("payload")
+    if not payload:
+        raise HTTPException(400, "payload required")
+    try:
+        return services.import_my_team_from_payload(payload, entry_id=body.get("entry"))
+    except Exception as exc:
+        raise HTTPException(400, f"import failed: {exc}")
 
 
 @app.post("/api/myteam/import")

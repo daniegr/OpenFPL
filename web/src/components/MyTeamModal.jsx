@@ -1,14 +1,33 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../api'
 import { useStore } from '../store'
 import { money } from '../util'
 
 const SLOTS = [['GK', 2], ['DEF', 5], ['MID', 5], ['FWD', 3]]
 
+// Runs inside the logged-in fantasy.premierleague.com tab: fetches the private
+// my-team JSON with the browser's own session and copies it to the clipboard.
+// No cookie ever leaves the browser or reaches this app.
+const BOOKMARKLET = "javascript:(async()=>{try{" +
+  "if(location.hostname!=='fantasy.premierleague.com'){alert('OpenFPL: open fantasy.premierleague.com (logged in) first, then click this bookmark.');return}" +
+  "const me=await(await fetch('/api/me/',{credentials:'same-origin'})).json();" +
+  "const e=me&&me.player&&me.player.entry;" +
+  "if(!e){alert('OpenFPL: log in to fantasy.premierleague.com first, then click the bookmark again.');return}" +
+  "const t=await(await fetch('/api/my-team/'+e+'/',{credentials:'same-origin'})).json();" +
+  "const s=JSON.stringify({entry:e,my_team:t});" +
+  "try{await navigator.clipboard.writeText(s);alert('OpenFPL: squad copied to clipboard - paste it into the planner (set my team > Bookmarklet).')}" +
+  "catch(x){prompt('OpenFPL: copy this and paste it into the planner:',s)}" +
+  "}catch(x){alert('OpenFPL bookmark failed: '+x)}})();"
+
 export default function MyTeamModal({ close }) {
-  const { entryId, entry, players, teams, byId, refreshEntry, setToast } = useStore()
-  const [mode, setMode] = useState('import')
+  const { entryId, setEntryId, entry, players, teams, byId, refreshEntry, setToast } = useStore()
+  const [mode, setMode] = useState('bookmark')
   const [cookie, setCookie] = useState('')
+  const [pasted, setPasted] = useState('')
+  const bmRef = useRef(null)
+  // React refuses javascript: hrefs in JSX; set the attribute directly so the
+  // link can be dragged to the bookmarks bar
+  useEffect(() => { bmRef.current?.setAttribute('href', BOOKMARKLET) }, [mode])
   const [busy, setBusy] = useState(false)
   // manual state: {GK: [ids], DEF: [...], ...}
   const [picks, setPicks] = useState(() => {
@@ -42,6 +61,28 @@ export default function MyTeamModal({ close }) {
     } catch (e) {
       setToast({ kind: 'err', msg: `Import failed — check the cookie is fresh and complete. (${e.message})` })
     } finally { setBusy(false) }
+  }
+
+  const doPaste = async () => {
+    setBusy(true)
+    try {
+      const doc = await api.pasteMyTeam(entryId, pasted.trim())
+      if (doc?.entry_id && doc.entry_id !== entryId) setEntryId(doc.entry_id)
+      refreshEntry()
+      setToast({ kind: 'ok', msg: 'Squad imported via the bookmarklet — planner and solver now start from it.' })
+      close()
+    } catch (e) {
+      setToast({ kind: 'err', msg: `Import failed: ${e.message}` })
+    } finally { setBusy(false) }
+  }
+
+  const copyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(BOOKMARKLET)
+      setToast({ kind: 'ok', msg: 'Bookmarklet code copied — create a bookmark and paste it as the URL.' })
+    } catch {
+      prompt('Copy this as the bookmark URL:', BOOKMARKLET)
+    }
   }
 
   const doSave = async () => {
@@ -85,15 +126,48 @@ export default function MyTeamModal({ close }) {
             <span className="chip dim">{entry.squad_source === 'public' ? 'from FPL (public)' : entry.squad_source}</span>
           )}
           <span style={{ marginLeft: 'auto', display: 'flex', gap: 6 }}>
+            <button className={`pill-btn ${mode === 'bookmark' ? 'accent' : ''}`}
+              onClick={() => setMode('bookmark')}>Bookmarklet</button>
             <button className={`pill-btn ${mode === 'import' ? 'accent' : ''}`}
-              onClick={() => setMode('import')}>Import from FPL</button>
+              onClick={() => setMode('import')}>Cookie</button>
             <button className={`pill-btn ${mode === 'manual' ? 'accent' : ''}`}
               onClick={() => setMode('manual')}>Enter manually</button>
             <button style={{ color: 'var(--muted)', fontSize: 16, marginLeft: 4 }} onClick={close}>✕</button>
           </span>
         </div>
 
-        {mode === 'import' ? (
+        {mode === 'bookmark' ? (
+          <div style={{ padding: 18 }}>
+            <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6, marginBottom: 12 }}>
+              The easiest way to load your private squad (works pre-deadline), the way
+              FPL Review does it — <b>no cookies, nothing stored</b>:
+            </p>
+            <ol className="steps">
+              <li>Drag this button onto your browser's bookmarks bar (or <b>copy the code</b> and
+                create a bookmark with it as the URL):&nbsp;
+                <a ref={bmRef} className="bookmarklet" onClick={(e) => e.preventDefault()}
+                  title="drag me to the bookmarks bar">⚽ OpenFPL squad</a>
+                &nbsp;<button className="pill-btn" onClick={copyCode}>⧉ copy code</button>
+              </li>
+              <li>Go to <b>fantasy.premierleague.com</b> (logged in) and click the bookmark — it
+                copies your squad to the clipboard</li>
+              <li>Come back and paste it below</li>
+            </ol>
+            <textarea value={pasted} onChange={(e) => setPasted(e.target.value)}
+              placeholder='{"entry": 123456, "my_team": {"picks": [ … ] } }' rows={4} spellCheck={false}
+              style={{ width: '100%', background: 'var(--bg-deep)', color: 'var(--text)',
+                       border: '1px solid var(--line)', borderRadius: 8, padding: 10,
+                       fontFamily: 'var(--mono)', fontSize: 11, resize: 'vertical' }} />
+            <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
+              <button className="pill-btn accent" disabled={!pasted.trim() || busy} onClick={doPaste}>
+                {busy ? <span className="spinner" /> : '⇩'} Import squad
+              </button>
+              {entry?.squad && entry.squad_source !== 'public' && (
+                <button className="pill-btn" onClick={doClear}>Clear saved squad</button>
+              )}
+            </div>
+          </div>
+        ) : mode === 'import' ? (
           <div style={{ padding: 18 }}>
             <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6, marginBottom: 12 }}>
               Before a gameweek deadline, FPL keeps your picks <b>private</b> — the public

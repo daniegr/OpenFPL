@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react'
 import { api, pollJob } from '../api'
 import { useStore } from '../store'
-import { CHIP_SHORT, fmt1, money, planToDraft } from '../util'
+import { CHIP_SHORT, fmt1, money, planToDraft, withBaseline } from '../util'
 
 const CHIP_DEFS = [
   ['wildcard', 'WC'], ['freehit', 'FH'], ['bench_boost', 'BB'], ['triple_captain', 'TC'],
@@ -82,7 +82,7 @@ export default function Solver({ goPlanner }) {
   const addDraft = (plan, i) => {
     setDrafts((ds) => {
       const label = `Solve ${String.fromCharCode(65 + (ds.length % 26))}`
-      const d = planToDraft(plan, result, label, `plan ${i + 1}`)
+      const d = withBaseline(planToDraft(plan, result, label, `plan ${i + 1}`))
       setActiveDraftId(d.id)
       return [...ds, d]
     })
@@ -277,7 +277,7 @@ export default function Solver({ goPlanner }) {
           {result && (
             <div style={{ marginTop: 16 }}>
               {result.plans.map((plan, i) => (
-                <PlanCard key={i} plan={plan} i={i} addDraft={addDraft} byId={byId} />
+                <PlanCard freeFirst={!!result?.state?.unlimited_transfers} key={i} plan={plan} i={i} addDraft={addDraft} byId={byId} />
               ))}
             </div>
           )}
@@ -357,7 +357,7 @@ function PlayerPicker({ label, color, list, setList, players, byId, exclude }) {
   )
 }
 
-function PlanCard({ plan, i, addDraft, byId }) {
+function PlanCard({ plan, i, addDraft, byId, freeFirst }) {
   const [open, setOpen] = useState(i === 0)
   const nm = (t) => t.name || byId.get(t.player_id)?.web_name || t.player_id
   return (
@@ -376,11 +376,20 @@ function PlanCard({ plan, i, addDraft, byId }) {
           <span style={{ color: 'var(--muted-2)' }}>{open ? '▴' : '▾'}</span>
         </span>
       </div>
-      {open && plan.per_gw.map((g) => (
+      {open && freeFirst && (
+        <div className="plan-note">
+          Pre-deadline: GW{plan.per_gw[0]?.gw} moves are free (FPL's unlimited transfers
+          before the first deadline) — hits and free-transfer limits apply from the next GW.
+        </div>
+      )}
+      {open && plan.per_gw.map((g, gi) => (
         <div className="plan-gw" key={g.gw}>
           <span className="g">GW{g.gw}</span>
           <div>
             {g.chip && <span className="chip gold" style={{ marginRight: 8 }}>{CHIP_SHORT[g.chip]}</span>}
+            {freeFirst && gi === 0 && g.transfers_in.length > 0 && (
+              <span className="chip green" style={{ marginRight: 8 }}>free rebuild</span>
+            )}
             {g.transfers_out.length === 0 && !g.chip && (
               <span style={{ color: 'var(--muted-2)' }}>roll</span>
             )}
@@ -396,7 +405,8 @@ function PlanCard({ plan, i, addDraft, byId }) {
             </div>
           </div>
           <span className="meta">
-            £{fmt1(g.bank)}m · {g.free_after}FT{g.hits ? ` · -${g.hits * 4}` : ''}
+            £{fmt1(g.bank)}m · {g.free_after}FT
+            {g.hits ? <span style={{ color: 'var(--red)' }}> · −{g.hits * 4} hit</span> : ''}
           </span>
         </div>
       ))}

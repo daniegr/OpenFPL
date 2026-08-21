@@ -73,6 +73,11 @@ _TEAM_US_COL = {
     "team ppda def": "ppda_def", "team ppda allowed att": "ppda_allowed_att",
     "team ppda allowed def": "ppda_allowed_def",
 }
+# FPL's own (Opta) expected stats stand in for the Understat metrics they map
+# onto when Understat history is unavailable/unresolved. Shots, key passes,
+# xGChain/xGBuildup, deep and PPDA have no FPL equivalent and stay NaN.
+_PLAYER_FPL_XG_COL = {"player xg": "xg", "player xa": "xa"}
+_TEAM_FPL_XG_COL = {"team xg": "xg", "team xga": "xga"}
 
 
 def gw_as_of(conn, season: str, gw: int) -> str | None:
@@ -181,14 +186,107 @@ def _understat_player_history(conn, understat_id, as_of) -> list[dict]:
     return [dict(r) for r in cur]
 
 
-def _team_history(conn, team_name, as_of) -> list[dict]:
-    """Team matches (by club name, cross-season) strictly before ``as_of``."""
-    cur = conn.execute(
-        "SELECT tm.* FROM team_match tm JOIN team t "
-        "ON tm.season=t.season AND tm.team_id=t.team_id "
-        "WHERE t.name=? AND tm.kickoff_utc IS NOT NULL AND tm.kickoff_utc < ? "
-        "ORDER BY tm.kickoff_utc DESC", (team_name, as_of))
+def _team_history(conn, team, as_of) -> list[dict]:
+    """Team matches (cross-season) strictly before ``as_of``, newest first.
+
+    ``team`` is a team row/dict (``name`` + optional ``code``) or a bare name.
+    Clubs are matched by FPL's stable ``code`` where the history rows carry it
+    (rename-proof: "Ipswich" -> "Ipswich Town"), else by name.
+    """
+    if isinstance(team, dict):
+        name, code = team.get("name"), team.get("code")
+    else:
+        name, code = team, None
+    if code is not None:
+        cur = conn.execute(
+            "SELECT tm.* FROM team_match tm JOIN team t "
+            "ON tm.season=t.season AND tm.team_id=t.team_id "
+            "WHERE (t.code=? OR (t.code IS NULL AND t.name=?)) "
+            "AND tm.kickoff_utc IS NOT NULL AND tm.kickoff_utc < ? "
+            "ORDER BY tm.kickoff_utc DESC", (code, name, as_of))
+    else:
+        cur = conn.execute(
+            "SELECT tm.* FROM team_match tm JOIN team t "
+            "ON tm.season=t.season AND tm.team_id=t.team_id "
+            "WHERE t.name=? AND tm.kickoff_utc IS NOT NULL AND tm.kickoff_utc < ? "
+            "ORDER BY tm.kickoff_utc DESC", (name, as_of))
     return [dict(r) for r in cur]
+
+
+_PRIOR_CACHE: dict[tuple, list[dict]] = {}
+
+
+def _relegated_prior_history(conn, season, as_of) -> list[dict]:
+    """Stand-in match log for a club with no top-flight history (promoted).
+
+    Without it the opponent features collapse to NaN -> 0, which the models
+    read as "never scores, never concedes" — the worst possible fixture for an
+    attacker. The prior pools the previous season's matches of the clubs that
+    have since left the division (the relegated sides): a promoted club is
+    modelled as playing like a relegated one. Point-in-time safe (all rows
+    predate ``as_of``); memoised per (season, as_of, log size).
+    """
+    n = conn.execute("SELECT COUNT(*) FROM team_match").fetchone()[0]
+    key = (season, as_of, n)
+    if key in _PRIOR_CACHE:
+        return _PRIOR_CACHE[key]
+    prev = conn.execute("SELECT MAX(season) s FROM team WHERE season<?",
+                        (season,)).fetchone()["s"]
+    rows: list[dict] = []
+    if prev:
+        cur_rows = conn.execute("SELECT name, code FROM team WHERE season=?",
+                                (season,)).fetchall()
+        cur_codes = {r["code"] for r in cur_rows if r["code"] is not None}
+        cur_names = {r["name"] for r in cur_rows}
+        for r in conn.execute("SELECT team_id, name, code FROM team WHERE season=?",
+                              (prev,)):
+            gone = (r["code"] not in cur_codes) if r["code"] is not None                 else (r["name"] not in cur_names)
+            if not gone:
+                continue
+            rows += [dict(x) for x in conn.execute(
+                "SELECT * FROM team_match WHERE season=? AND team_id=? AND "
+                "kickoff_utc IS NOT NULL AND kickoff_utc < ?",
+                (prev, r["team_id"], as_of))]
+        rows.sort(key=lambda x: x["kickoff_utc"], reverse=True)
+    if len(_PRIOR_CACHE) > 8:
+        _PRIOR_CACHE.clear()
+    _PRIOR_CACHE[key] = rows
+    return rows
+
+
+def _relegated_prior_understat(conn, season, as_of) -> list[dict]:
+    """Understat stand-in for a club with no Understat club history (promoted):
+    the previous season's ``understat_team_match`` rows of the clubs that have
+    since left the division (the relegated sides), pooled — the Understat twin
+    of ``_relegated_prior_history``. Point-in-time safe; memoised."""
+    n = conn.execute("SELECT COUNT(*) FROM understat_team_match").fetchone()[0]
+    key = ("understat", season, as_of, n)
+    if key in _PRIOR_CACHE:
+        return _PRIOR_CACHE[key]
+    from .resolve import understat_team_title
+    prev = conn.execute("SELECT MAX(season) s FROM team WHERE season<?",
+                        (season,)).fetchone()["s"]
+    rows: list[dict] = []
+    if prev:
+        cur_rows = conn.execute("SELECT name, code FROM team WHERE season=?",
+                                (season,)).fetchall()
+        cur_codes = {r["code"] for r in cur_rows if r["code"] is not None}
+        cur_names = {r["name"] for r in cur_rows}
+        for r in conn.execute("SELECT name, code, understat_name FROM team "
+                              "WHERE season=?", (prev,)):
+            gone = (r["code"] not in cur_codes) if r["code"] is not None \
+                else (r["name"] not in cur_names)
+            if not gone:
+                continue
+            title = r["understat_name"] or understat_team_title(r["name"])
+            rows += [dict(x) for x in conn.execute(
+                "SELECT * FROM understat_team_match WHERE understat_team=? "
+                "AND match_date < ?", (title, (as_of or "")[:10]))]
+        rows.sort(key=lambda x: x["match_date"], reverse=True)
+    if len(_PRIOR_CACHE) > 8:
+        _PRIOR_CACHE.clear()
+    _PRIOR_CACHE[key] = rows
+    return rows
 
 
 def _understat_team_history(conn, understat_name, as_of) -> list[dict]:
@@ -225,7 +323,7 @@ def build_samples(conn, season: str, gw: int, *, as_of: str | None = None,
 
     # team_id -> (name, understat_name) for the season
     teams = {r["team_id"]: dict(r) for r in conn.execute(
-        "SELECT team_id, name, understat_name FROM team WHERE season=?", (season,))}
+        "SELECT team_id, name, code, understat_name FROM team WHERE season=?", (season,))}
 
     # Fixtures for this gw: map team_id -> (opponent_id, is_home)
     matchups = _matchups(conn, season, gw)
@@ -260,27 +358,42 @@ def build_samples(conn, season: str, gw: int, *, as_of: str | None = None,
         _emit(rec, "player relevant fpl points", _window_means(_relevant_points(ph)))
         for base, col in _PLAYER_US_COL.items():
             _emit(rec, base, _window_means([r[col] for r in uph]))
+        if not uph:   # Understat missing -> FPL xG/xA (same point-in-time rows)
+            for base, col in _PLAYER_FPL_XG_COL.items():
+                _emit(rec, base, _window_means([r.get(col) for r in ph]))
 
         # --- team history ---
-        th = _team_history(conn, team.get("name"), as_of)
-        uth = _understat_team_history(conn, team.get("understat_name"), as_of)
+        th = (_team_history(conn, team, as_of)
+              or _relegated_prior_history(conn, season, as_of))
+        uth = (_understat_team_history(conn, team.get("understat_name"), as_of)
+               or _relegated_prior_understat(conn, season, as_of))
         _emit(rec, "team goals scored", _window_means([r["goals_for"] for r in th]))
         _emit(rec, "team goals conceded", _window_means([r["goals_against"] for r in th]))
         for base, col in _TEAM_US_COL.items():
             _emit(rec, base, _window_means([r[col] for r in uth]))
+        if not uth:   # Understat missing -> summed FPL xG / opponent xG
+            for base, col in _TEAM_FPL_XG_COL.items():
+                _emit(rec, base, _window_means([r.get(col) for r in th]))
         # league-rank features are AM-only in OpenFPL -> NaN for player rows
         _emit_nan(rec, "team league rank")
         _emit_nan(rec, "team opponent league rank")
 
         # --- opponent history ---
-        oh = _team_history(conn, opp.get("name"), as_of)
-        uoh = _understat_team_history(conn, opp.get("understat_name"), as_of)
+        oh = (_team_history(conn, opp, as_of)
+              or _relegated_prior_history(conn, season, as_of))
+        uoh = (_understat_team_history(conn, opp.get("understat_name"), as_of)
+               or _relegated_prior_understat(conn, season, as_of))
         _emit(rec, "opponent goals scored", _window_means([r["goals_for"] for r in oh]))
         _emit(rec, "opponent goals conceded", _window_means([r["goals_against"] for r in oh]))
         for base_o, col in _TEAM_US_COL.items():
             base = base_o.replace("team ", "opponent ")
             if base in config.OPPONENT_METRICS:
                 _emit(rec, base, _window_means([r[col] for r in uoh]))
+        if not uoh:
+            for base_o, col in _TEAM_FPL_XG_COL.items():
+                base = base_o.replace("team ", "opponent ")
+                if base in config.OPPONENT_METRICS:
+                    _emit(rec, base, _window_means([r.get(col) for r in oh]))
 
         # --- status ---
         rec["status player availability"] = _availability(conn, season, p["player_id"])

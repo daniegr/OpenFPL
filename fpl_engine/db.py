@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS team (
     team_id     INTEGER NOT NULL,        -- FPL team id within the season
     name        TEXT NOT NULL,
     short_name  TEXT,
+    code        INTEGER,                 -- FPL stable cross-season club code
     understat_name TEXT,                 -- resolved Understat title
     PRIMARY KEY (season, team_id)
 );
@@ -107,6 +108,10 @@ CREATE TABLE IF NOT EXISTS player_gw (
     creativity      REAL,
     threat          REAL,
     starts          REAL,
+    xg              REAL,                -- FPL (Opta) expected goals, per match
+    xa              REAL,                -- FPL expected assists
+    xgi             REAL,                -- FPL expected goal involvements
+    xgc             REAL,                -- FPL expected goals conceded (on pitch)
     PRIMARY KEY (season, gw, source, player_id, fixture_id)
 );
 CREATE INDEX IF NOT EXISTS ix_player_gw_code ON player_gw(player_code, season, gw);
@@ -122,6 +127,8 @@ CREATE TABLE IF NOT EXISTS team_match (
     was_home     INTEGER,
     goals_for    REAL,
     goals_against REAL,
+    xg           REAL,                   -- team xG = sum of its players' FPL xG
+    xga          REAL,                   -- team xGA = opponent's xG
     PRIMARY KEY (season, team_id, fixture_id)
 );
 CREATE INDEX IF NOT EXISTS ix_team_match ON team_match(season, team_id, kickoff_utc);
@@ -197,6 +204,15 @@ def connect(db_path: str | None = None) -> sqlite3.Connection:
 # Columns added after the initial schema. init_db() adds any that are missing so
 # a database created by an earlier version self-heals without a full re-pull.
 _COLUMN_MIGRATIONS = {
+    "team": [
+        ("code", "INTEGER"),
+    ],
+    "player_gw": [
+        ("xg", "REAL"), ("xa", "REAL"), ("xgi", "REAL"), ("xgc", "REAL"),
+    ],
+    "team_match": [
+        ("xg", "REAL"), ("xga", "REAL"),
+    ],
     "player": [
         ("now_cost", "REAL"),
         ("status", "TEXT"),

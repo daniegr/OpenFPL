@@ -10,6 +10,7 @@ export function StoreProvider({ children }) {
   const [playersDoc, setPlayersDoc] = useState(null)
   const [fixtures, setFixtures] = useState(null)
   const [proj, setProj] = useState(null)
+  const [projHistory, setProjHistory] = useState([])
   const [draftsDoc, setDraftsDoc] = useState({ drafts: [] })
   const [activeDraftId, setActiveDraftId] = useState(null)
   const [entryId, setEntryId] = useState(null)
@@ -17,8 +18,10 @@ export function StoreProvider({ children }) {
   const [toast, setToast] = useState(null)
   const saveTimer = useRef(null)
 
-  const refreshProjections = useCallback(
-    () => api.projections().then(setProj).catch(() => {}), [])
+  const refreshProjections = useCallback(() => {
+    api.projections().then(setProj).catch(() => {})
+    api.projectionHistory().then((h) => setProjHistory(h.snapshots || [])).catch(() => {})
+  }, [])
 
   useEffect(() => {
     api.status().then((s) => {
@@ -66,7 +69,7 @@ export function StoreProvider({ children }) {
     status, setStatus,
     players: playersDoc?.players || [], byId, teams,
     events: playersDoc?.events || [],
-    fixtures, proj, refreshProjections,
+    fixtures, proj, projHistory, refreshProjections,
     drafts: draftsDoc.drafts || [], setDrafts,
     activeDraftId, setActiveDraftId,
     entryId, setEntryId, entry, refreshEntry,

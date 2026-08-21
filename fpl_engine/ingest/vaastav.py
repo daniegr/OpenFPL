@@ -42,7 +42,9 @@ def ingest_season(conn, season: str, *, use_cache: bool = True) -> dict:
     teams = _csv_rows(f"{base}/teams.csv", use_cache)
     db.upsert(conn, "team", [{
         "season": season, "team_id": int(t["id"]), "name": t["name"],
-        "short_name": t.get("short_name"), "understat_name": None,
+        "short_name": t.get("short_name"),
+        "code": int(t["code"]) if t.get("code") else None,
+        "understat_name": None,
     } for t in teams])
     team_name_to_id = {t["name"]: int(t["id"]) for t in teams}
 
@@ -97,11 +99,16 @@ def ingest_season(conn, season: str, *, use_cache: bool = True) -> dict:
             "bonus": _num(m.get("bonus")), "bps": _num(m.get("bps")),
             "influence": _num(m.get("influence")), "creativity": _num(m.get("creativity")),
             "threat": _num(m.get("threat")), "starts": _num(m.get("starts")),
+            # FPL expected stats (present from 2022-23; None before)
+            "xg": _num(m.get("expected_goals")), "xa": _num(m.get("expected_assists")),
+            "xgi": _num(m.get("expected_goal_involvements")),
+            "xgc": _num(m.get("expected_goals_conceded")),
         })
     n = db.upsert(conn, "player_gw", rows)
 
     # Derive per-team match results from the (repeated) player rows.
     tm: dict[tuple, dict] = {}
+    team_xg: dict[tuple, float] = {}     # (team_id, fixture) -> summed player xG
     for m in merged:
         was_home = str(m.get("was_home")).lower() in ("true", "1")
         team_id = team_name_to_id.get(m.get("team"))
@@ -110,6 +117,9 @@ def ingest_season(conn, season: str, *, use_cache: bool = True) -> dict:
             continue
         gf = _num(m.get("team_h_score")) if was_home else _num(m.get("team_a_score"))
         ga = _num(m.get("team_a_score")) if was_home else _num(m.get("team_h_score"))
+        pxg = _num(m.get("expected_goals"))
+        if pxg is not None:
+            team_xg[(team_id, fixture)] = team_xg.get((team_id, fixture), 0.0) + pxg
         tm[(season, team_id, fixture)] = {
             "season": season, "team_id": team_id, "fixture_id": fixture,
             "gw": int(m["GW"]) if m.get("GW") else None,
@@ -117,6 +127,9 @@ def ingest_season(conn, season: str, *, use_cache: bool = True) -> dict:
             "opponent_id": int(m["opponent_team"]) if m.get("opponent_team") else None,
             "was_home": int(was_home), "goals_for": gf, "goals_against": ga,
         }
+    for (s_, team_id, fixture), d in tm.items():
+        d["xg"] = team_xg.get((team_id, fixture))
+        d["xga"] = team_xg.get((d["opponent_id"], fixture))
     db.upsert(conn, "team_match", list(tm.values()))
 
     return {"season": season, "teams": len(teams), "players": len(players),

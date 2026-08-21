@@ -3,11 +3,12 @@ import { useStore } from './store'
 import Planner from './tabs/Planner'
 import Projections from './tabs/Projections'
 import Fixtures from './tabs/Fixtures'
+import MiniLeague from './tabs/MiniLeague'
 import Solver from './tabs/Solver'
 import MyTeamModal from './components/MyTeamModal'
-import { api, pollJob } from './api'
+import { API_VERSION, api, pollJob } from './api'
 
-const TABS = ['Planner', 'Projections', 'Fixtures', 'Solver']
+const TABS = ['Planner', 'Projections', 'Fixtures', 'Mini League', 'Solver']
 
 export default function App() {
   const [tab, setTab] = useState('Planner')
@@ -36,8 +37,17 @@ export default function App() {
     }
   }
 
+  const stale = status && status.api_version !== API_VERSION
+
   return (
     <>
+      {stale && (
+        <div className="stale-banner">
+          ⚠ The backend is running an older build than this page (API {status.api_version || 'unknown'}
+          vs {API_VERSION}). Stop and restart <b>python -m app</b>, then reload — otherwise new
+          features will fail with 404/405 errors.
+        </div>
+      )}
       <header className="topnav">
         <div className="brand">
           <div className="brand-mark">⚽</div>
@@ -70,6 +80,7 @@ export default function App() {
         {tab === 'Planner' && <Planner />}
         {tab === 'Projections' && <Projections />}
         {tab === 'Fixtures' && <Fixtures />}
+        {tab === 'Mini League' && <MiniLeague />}
         {tab === 'Solver' && <Solver goPlanner={() => setTab('Planner')} />}
       </main>
 

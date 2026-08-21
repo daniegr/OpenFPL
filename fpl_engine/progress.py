@@ -9,11 +9,23 @@ import os
 import sys
 
 _QUIET = os.environ.get("FPL_QUIET", "") not in ("", "0", "false", "False")
+_LISTENER = None   # optional callable(msg) — e.g. the web app's job progress
+
+
+def set_listener(fn) -> None:
+    """Mirror every progress line to ``fn(msg)`` (None to unhook)."""
+    global _LISTENER
+    _LISTENER = fn
 
 
 def log(msg: str) -> None:
     if not _QUIET:
         print(msg, file=sys.stderr, flush=True)
+    if _LISTENER is not None:
+        try:
+            _LISTENER(msg)
+        except Exception:  # noqa: BLE001 - never let UI plumbing break a pull
+            pass
 
 
 def step(msg: str) -> None:

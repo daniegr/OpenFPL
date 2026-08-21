@@ -19,6 +19,24 @@ export const badgeUrl = (teamCode) =>
 export const fmt1 = (x) => (x == null || Number.isNaN(x) ? '–' : Number(x).toFixed(1))
 export const money = (x) => (x == null ? '–' : `£${Number(x).toFixed(1)}m`)
 
+// Continuous fixture-difficulty colour: 1 (easy, green) -> 3 (neutral grey)
+// -> 5 (hard, deep red). Returns {bg, fg} for a cell.
+export function fdrColor(v) {
+  if (v == null || Number.isNaN(v)) return { bg: 'var(--panel-2)', fg: 'var(--muted-2)' }
+  const t = Math.max(1, Math.min(5, Number(v)))
+  const lerp = (a, b, u) => a.map((x, i) => Math.round(x + (b[i] - x) * u))
+  const green = [39, 160, 90], grey = [75, 75, 104], red = [139, 23, 50]
+  const c = t <= 3 ? lerp(green, grey, (t - 1) / 2) : lerp(grey, red, (t - 3) / 2)
+  return { bg: `rgb(${c.join(',')})`, fg: t <= 1.9 ? '#06301a' : '#f2f2fc' }
+}
+
+// Availability % from FPL status + chance_of_playing flags.
+export function availPct(p) {
+  if (!p) return 100
+  if (p.status == null || p.status === 'a') return p.chance ?? 100
+  return p.chance ?? 0
+}
+
 // Interpolated blue for projection cells: low -> deep panel blue, high -> bright.
 export function epColor(v, max = 8) {
   const t = Math.max(0, Math.min(1, (v ?? 0) / max))
@@ -101,6 +119,7 @@ export function planToDraft(plan, meta, label, note) {
     source: 'solver',
     entry: meta?.entry_id || null,
     objective: plan.objective,
+    baseline: null,   // set below: the plan as delivered, for change highlighting
     gws: plan.per_gw.map((g) => ({
       gw: g.gw,
       chip: g.chip,
@@ -116,6 +135,30 @@ export function planToDraft(plan, meta, label, note) {
       hits: g.hits,
     })),
   }
+}
+
+// Snapshot a draft's gws as its baseline (what the deltas are measured against).
+export function withBaseline(draft) {
+  return { ...draft, baseline: structuredClone(draft.gws) }
+}
+
+// Per-gw EV delta of a draft vs its baseline (null when no baseline).
+export function baselineDeltas(draft, proj) {
+  if (!draft?.baseline) return null
+  return draft.gws.map((p, i) => {
+    const b = draft.baseline[i]
+    return b ? gwEV(p, proj) - gwEV(b, proj) : 0
+  })
+}
+
+// Moves vs baseline for one gw: [{out, in}] (ids), ignoring a full build.
+export function movesVsBaseline(plan, basePlan) {
+  if (!plan || !basePlan) return []
+  const before = new Set(basePlan.squad.map((s) => s.id))
+  const after = new Set(plan.squad.map((s) => s.id))
+  const outs = [...before].filter((id) => !after.has(id))
+  const ins = [...after].filter((id) => !before.has(id))
+  return { outs, ins }
 }
 
 export function downloadCSV(filename, header, rows) {

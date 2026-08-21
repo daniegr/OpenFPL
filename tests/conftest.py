@@ -62,4 +62,7 @@ def conn():
     c.commit()
     yield c
     c.close()
-    os.remove(path)
+    try:
+        os.remove(path)
+    except PermissionError:
+        pass  # Windows: WAL handles can outlive close(); temp dir cleans up

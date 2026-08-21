@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import os
 import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -43,25 +44,47 @@ def _cache_path(url: str) -> str:
 
 
 def get_text(url: str, *, use_cache: bool = True, retries: int = 4,
-             timeout: int = 60) -> str:
-    """GET a URL as text, with on-disk caching and exponential backoff retries."""
-    cache = _cache_path(url)
+             timeout: int = 60, headers: dict | None = None) -> str:
+    """GET a URL as text, with on-disk caching and exponential backoff retries.
+
+    ``headers`` are merged over the default User-Agent (some JSON endpoints,
+    e.g. Understat's, answer only to ``X-Requested-With: XMLHttpRequest``).
+    """
+    return _request("GET", url, None, use_cache=use_cache, retries=retries,
+                    timeout=timeout, headers=headers)
+
+
+def post_text(url: str, data: dict, *, use_cache: bool = True, retries: int = 4,
+              timeout: int = 60, headers: dict | None = None) -> str:
+    """POST a form and return the body as text (cached on url + form data)."""
+    return _request("POST", url, data, use_cache=use_cache, retries=retries,
+                    timeout=timeout, headers=headers)
+
+
+def _request(method: str, url: str, data: dict | None, *, use_cache: bool,
+             retries: int, timeout: int, headers: dict | None) -> str:
+    form = urllib.parse.urlencode(sorted((data or {}).items()))
+    cache = _cache_path(url if method == "GET" else f"{url}?{form}")
     if use_cache and os.path.exists(cache):
         with open(cache, "r", encoding="utf-8") as fh:
             return fh.read()
 
+    hdrs = {"User-Agent": USER_AGENT, **(headers or {})}
     host = url.split("/")[2]
     last_err: Exception | None = None
     for attempt in range(retries):
         try:
             _throttle(host)
             if requests is not None:
-                resp = requests.get(url, headers={"User-Agent": USER_AGENT},
-                                    timeout=timeout)
+                resp = (requests.get(url, headers=hdrs, timeout=timeout)
+                        if method == "GET" else
+                        requests.post(url, data=data, headers=hdrs, timeout=timeout))
                 resp.raise_for_status()
                 text = resp.text
             else:  # pragma: no cover
-                req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+                body = form.encode() if method == "POST" else None
+                req = urllib.request.Request(url, data=body, headers=hdrs,
+                                             method=method)
                 with urllib.request.urlopen(req, timeout=timeout) as r:
                     text = r.read().decode("utf-8", "replace")
             if use_cache:
@@ -72,4 +95,4 @@ def get_text(url: str, *, use_cache: bool = True, retries: int = 4,
             last_err = e
             if attempt < retries - 1:
                 time.sleep(2 ** attempt)
-    raise RuntimeError(f"GET failed after {retries} attempts: {url}") from last_err
+    raise RuntimeError(f"{method} failed after {retries} attempts: {url}") from last_err
