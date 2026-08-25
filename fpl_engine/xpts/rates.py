@@ -70,10 +70,15 @@ def fit(conn, season: str, as_of: str, *, rules: dict | None = None) -> pd.DataF
 
     hist["residual"] = (hist["total_points"].fillna(0)
                         - np.array([_base_points(r) for r in hist.itertuples()]))
-    # xg/xa missing (old seasons without Understat/Opta) -> fall back to
-    # realised goals/assists as the rate numerator
+    # xg missing (old seasons without Understat/Opta) -> fall back to goals
     hist["xg"] = hist["xg"].fillna(hist["goals_scored"]).fillna(0)
-    hist["xa"] = hist["xa"].fillna(hist["assists"]).fillna(0)
+    # FPL assists are much broader than Opta xA (rebounds, won penalties,
+    # deflected passes all count), so pure xA systematically lowballs the
+    # assist rate (GW1 2026-27: league xA 15.4 vs 24 FPL assists). Blend the
+    # stable estimator with the realised FPL-definition rate 50/50.
+    hist["xa"] = np.where(hist["xa"].notna(),
+                          0.5 * hist["xa"].fillna(0) + 0.5 * hist["assists"].fillna(0),
+                          hist["assists"].fillna(0))
 
     ref = pd.Timestamp(datetime.fromisoformat(as_of.replace("Z", "+00:00")))
     days = (ref - _parse(hist["kickoff_utc"])).dt.days.clip(lower=0)

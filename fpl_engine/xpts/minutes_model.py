@@ -28,6 +28,11 @@ META_PATH = os.path.join(MODEL_DIR, "minutes_meta.json")
 
 FEATURES = ["starts_l5", "mins_l1", "mins_l3", "mins_l5", "avg_mins_when_played",
             "apps_l10", "since_last_app", "season_min_share",
+            # depth-chart & context signals (GW1 post-mortem: backups at new
+            # clubs and promoted-club starters were the two biggest miss
+            # classes — price rank inside a team+position encodes the depth
+            # chart, the flags mark when history is least transferable)
+            "price", "price_rank", "new_club", "career_apps", "season_idx",
             "is_gk", "is_def", "is_mid", "is_fwd"]
 LABELS = {0: "none", 1: "sub", 2: "full"}   # 0 min / 1-59 / 60+
 
@@ -38,19 +43,30 @@ def _frame(conn, seasons: list[str], before: str | None = None) -> pd.DataFrame:
     Rows are ordered per player by kickoff; every feature uses shifted
     (strictly prior) values only.
     """
-    q = ("SELECT season, player_id, player_code, fixture_id, kickoff_utc, "
-         "minutes, starts, "
-         "(SELECT position FROM player p WHERE p.season=pg.season AND "
-         " p.player_id=pg.player_id) position "
-         "FROM player_gw pg WHERE season IN (%s)" %
-         ",".join("?" * len(seasons)))
+    q = ("SELECT pg.season, pg.player_id, pg.player_code, pg.fixture_id, "
+         "pg.kickoff_utc, pg.minutes, pg.starts, pg.team_id, "
+         "p.position position, p.now_cost price "
+         "FROM player_gw pg LEFT JOIN player p "
+         "ON p.season=pg.season AND p.player_id=pg.player_id "
+         "WHERE pg.season IN (%s)" % ",".join("?" * len(seasons)))
     args = list(seasons)
     if before:
-        q += " AND kickoff_utc < ?"
+        q += " AND pg.kickoff_utc < ?"
         args.append(before)
     df = pd.read_sql_query(q, conn, params=args)
     if df.empty:
         return df
+    df["price"] = pd.to_numeric(df["price"], errors="coerce")
+    # depth chart: price rank within that season's team+position (1 = priciest)
+    pr = pd.read_sql_query(
+        "SELECT season, player_id, team_id, position, now_cost FROM player "
+        "WHERE season IN (%s)" % ",".join("?" * len(seasons)),
+        conn, params=list(seasons))
+    pr["now_cost"] = pd.to_numeric(pr["now_cost"], errors="coerce")
+    pr["price_rank"] = pr.groupby(["season", "team_id", "position"])[
+        "now_cost"].rank(ascending=False, method="min")
+    df = df.merge(pr[["season", "player_id", "price_rank"]],
+                  on=["season", "player_id"], how="left")
     df["minutes"] = df["minutes"].fillna(0)
     df["played"] = (df["minutes"] > 0).astype(float)
     df["started"] = df["starts"].fillna(0).astype(float)
@@ -79,6 +95,12 @@ def _frame(conn, seasons: list[str], before: str | None = None) -> pd.DataFrame:
     cum_min = g["minutes"].transform(lambda s: s.shift(1).expanding().sum())
     cum_n = g["minutes"].transform(lambda s: s.shift(1).expanding().count())
     df["season_min_share"] = cum_min / (cum_n * 90.0)
+    # context: did the player change club since his last row; how deep is his
+    # history; how far into the current season this match is
+    df["new_club"] = (g["team_id"].shift(1) != df["team_id"]).astype(float)
+    df["career_apps"] = g.cumcount().astype(float)
+    df["season_idx"] = df.groupby(["player_code", "season"],
+                                  sort=False).cumcount().astype(float)
     for pos, col in (("GK", "is_gk"), ("DEF", "is_def"),
                      ("MID", "is_mid"), ("FWD", "is_fwd")):
         df[col] = (df["position"] == pos).astype(float)
@@ -137,11 +159,14 @@ def predict_gw(conn, season: str, as_of: str, clf, meta, *,
     seasons = list(dict.fromkeys(config.BACKFILL_SEASONS + [season]))
     hist = _frame(conn, seasons, before=as_of)
     players = pd.read_sql_query(
-        "SELECT player_id, code player_code, position, status, chance_next "
-        "FROM player WHERE season=?", conn, params=(season,))
+        "SELECT player_id, code player_code, position, status, chance_next, "
+        "team_id, now_cost price FROM player WHERE season=?",
+        conn, params=(season,))
     if hist.empty:
-        latest = pd.DataFrame(columns=FEATURES)
-        feats = players.assign(**{f: np.nan for f in FEATURES})
+        feats = players.assign(**{f: np.nan for f in (
+            "starts_l5", "mins_l1", "mins_l3", "mins_l5",
+            "avg_mins_when_played", "apps_l10", "since_last_app",
+            "season_min_share")})
     else:
         # roll each player's state one step forward past their last match
         last = hist.groupby("player_code", sort=False).tail(1).copy()
@@ -161,10 +186,29 @@ def predict_gw(conn, season: str, as_of: str, clf, meta, *,
         tot = hist.groupby("player_code")["minutes"].agg(["sum", "count"])
         last["season_min_share"] = (tot["sum"] / (tot["count"] * 90.0)
                                     ).reindex(last["player_code"]).values
-        latest = last.set_index("player_code")[
-            [f for f in FEATURES if not f.startswith("is_")]]
+        hist_feats = ["starts_l5", "mins_l1", "mins_l3", "mins_l5",
+                      "avg_mins_when_played", "apps_l10", "since_last_app",
+                      "season_min_share"]
+        latest = last.set_index("player_code")[hist_feats + ["team_id"]].rename(
+            columns={"team_id": "last_team_id"})
         feats = players.merge(latest, left_on="player_code", right_index=True,
                               how="left")
+    # context features from the CURRENT player row (a summer signing's history
+    # rows all sit at his old club — depth chart must come from today's squad)
+    feats["price"] = pd.to_numeric(feats["price"], errors="coerce")
+    feats["price_rank"] = feats.groupby(["team_id", "position"])["price"].rank(
+        ascending=False, method="min")
+    if "last_team_id" in feats:
+        feats["new_club"] = (feats["last_team_id"] != feats["team_id"]
+                             ).astype(float)
+    else:
+        feats["new_club"] = 1.0
+    counts = (hist.groupby("player_code").size() if not hist.empty
+              else pd.Series(dtype=float))
+    feats["career_apps"] = feats["player_code"].map(counts).fillna(0.0)
+    in_season = (hist[hist["season"] == season].groupby("player_code").size()
+                 if not hist.empty else pd.Series(dtype=float))
+    feats["season_idx"] = feats["player_code"].map(in_season).fillna(0.0)
     for pos, col in (("GK", "is_gk"), ("DEF", "is_def"),
                      ("MID", "is_mid"), ("FWD", "is_fwd")):
         feats[col] = (feats["position"] == pos).astype(float)

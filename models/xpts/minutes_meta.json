@@ -8,6 +8,11 @@
     "apps_l10",
     "since_last_app",
     "season_min_share",
+    "price",
+    "price_rank",
+    "new_club",
+    "career_apps",
+    "season_idx",
     "is_gk",
     "is_def",
     "is_mid",
@@ -18,7 +23,7 @@
     "2023-24"
   ],
   "valid_season": "2024-25",
-  "holdout_accuracy": 0.8011229849664916,
+  "holdout_accuracy": 0.8003260278934976,
   "mean_minutes": {
     "sub": 22.207960199004976,
     "full": 85.4792277303428
