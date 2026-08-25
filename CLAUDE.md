@@ -73,6 +73,30 @@ Two independent mechanisms:
    random splits, no look-ahead) — the frame is built with the same `as_of`
    builder used for prediction.
 
+## xPts component engine (fpl_engine/xpts/)
+
+A structural alternative to the monolithic OpenFPL regression: FPL points are
+*assembled* from modelled processes, combined through the scoring YAML (which
+stays the single source of truth):
+
+| Module | Component |
+|---|---|
+| `xpts/team_model.py` | time-decayed Poisson attack/defence (fit on `team_match`, teams matched across seasons by `code`, goals blended with xG, promoted clubs shrunk to a below-average prior) |
+| `xpts/minutes_model.py` | XGBoost P(0 / 1-59 / 60+ minutes) from start-pattern features; cached in `models/xpts/`; live availability (status/chance_next) is applied on top |
+| `xpts/rates.py` | empirical-Bayes-shrunk per-90 rates (xG, xA, saves, bonus, cards) + a **residual rate** = actual points minus reconstructed points, which absorbs DefCon (no raw defcon stats exist in the DB) |
+| `xpts/engine.py` | E[points] per player per gw: exposure x rates x fixture scalers, P(CS)=P(60+)*exp(-λ_opp), Poisson floor-division expectations for conceded/saves; DGWs sum over fixtures |
+| `backtest.py` | forward-in-time replay of a past season scoring xpts vs OpenFPL vs naive baselines (Spearman, precision@20, captain pts, RMSE); fits the blend weight on the first half of the season, evaluates on the second, writes `models/xpts/blend.json` |
+
+`predict`/`optimise`/the web app automatically blend xPts with OpenFPL using
+the weight in `models/xpts/blend.json` (absent or 0 = pure OpenFPL). Penalty
+takers (`penalties_order` from the live bootstrap) get a small xG90 boost in
+the web path. Backtests disable the availability overlay (stored status is
+today's, not historical). Run:
+
+```
+python -m fpl_engine backtest --backtest-season 2025-26   # also (re)trains minutes model
+```
+
 ## Optimiser
 
 `optimise/milp.py` is a multi-period mixed-integer program (PuLP + bundled CBC,

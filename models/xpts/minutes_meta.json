@@ -1,0 +1,26 @@
+{
+  "features": [
+    "starts_l5",
+    "mins_l1",
+    "mins_l3",
+    "mins_l5",
+    "avg_mins_when_played",
+    "apps_l10",
+    "since_last_app",
+    "season_min_share",
+    "is_gk",
+    "is_def",
+    "is_mid",
+    "is_fwd"
+  ],
+  "train_seasons": [
+    "2022-23",
+    "2023-24"
+  ],
+  "valid_season": "2024-25",
+  "holdout_accuracy": 0.8011229849664916,
+  "mean_minutes": {
+    "sub": 22.207960199004976,
+    "full": 85.4792277303428
+  }
+}

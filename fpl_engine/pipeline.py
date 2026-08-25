@@ -138,6 +138,25 @@ def build(conn, gw: int, *, season: str | None = None, store: bool = True) -> pd
     return df
 
 
+def xpts_weight() -> float | None:
+    """Backtest-fitted xPts blend weight, or None when never fitted.
+
+    Written by ``python -m fpl_engine backtest`` to models/xpts/blend.json;
+    a weight of 0 means the backtest preferred pure OpenFPL.
+    """
+    import json
+    import os
+    path = os.path.join(config.MODELS_DIR, "xpts", "blend.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as fh:
+            w = float(json.load(fh).get("weight", 0))
+        return w if w > 0 else None
+    except Exception:
+        return None
+
+
 def resolve_blend(conn, season: str, blend):
     """Resolve a --blend argument into (retrained_models_or_None, weight).
 
@@ -231,8 +250,12 @@ def optimise_squad(conn, *, entry_id: int, season: str | None = None,
     if weight > 0:
         progress.step(f"Blending retrained model (weight {weight:.2f})")
     progress.step(f"Projecting points for {len(gws)} gameweeks…")
+    xw = xpts_weight()
+    if xw:
+        progress.step(f"Blending xPts component engine (weight {xw:.2f})")
     proj = project.horizon_projections(conn, season, gws, bundle=bundle,
-                                       decay=decay, retrained=retrained, blend=weight)
+                                       decay=decay, retrained=retrained,
+                                       blend=weight, xpts_w=xw)
 
     progress.step(f"Fetching entry {entry_id}…")
     squad_state = manager.current_squad(entry_id, use_cache=use_cache)

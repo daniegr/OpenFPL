@@ -120,6 +120,29 @@ def cmd_optimise(args):
     print("  (* = starting XI)")
 
 
+def cmd_backtest(args):
+    from . import backtest
+    db.init_db(args.db)
+    with db.session(args.db) as conn:
+        report = backtest.run(conn, args.backtest_season, gws=args.gws or None,
+                              openfpl_every=args.openfpl_every,
+                              retrain_minutes=args.retrain_minutes,
+                              with_openfpl=not args.no_openfpl)
+    print(f"\nBacktest {report['season']} "
+          f"(minutes-model holdout acc {report['minutes_holdout_accuracy']}):")
+    cols = ["spearman", "p_at_20", "captain", "captain_best", "rmse", "gws"]
+    print(f"{'model':<10}" + "".join(f"{c:>14}" for c in cols))
+    for name, m in sorted(report["summary"].items()):
+        print(f"{name:<10}" + "".join(f"{m.get(c, float('nan')):>14}" for c in cols))
+    if report.get("blend"):
+        b = report["blend"]
+        print(f"\nBlend fit: w(xpts)={b['weight']}  "
+              f"eval spearman openfpl={b['eval_spearman']['openfpl']:.4f} "
+              f"xpts={b['eval_spearman']['xpts']:.4f} "
+              f"blend={b['eval_spearman']['blend']:.4f}")
+        print("Saved to models/xpts/blend.json (used automatically by predict/web).")
+
+
 def cmd_run(args):
     from .pipeline import pull, predict_gw
     with db.session(args.db) as conn:
@@ -193,6 +216,18 @@ def main(argv=None):
     sp.add_argument("--blend", default=None,
                     help="blend retrained model: 'auto', or a weight 0..1 (needs `train` first)")
     sp.set_defaults(func=cmd_optimise)
+
+    sp = sub.add_parser("backtest", help="replay past gameweeks: xpts vs OpenFPL vs baselines")
+    sp.add_argument("--backtest-season", default="2025-26",
+                    help="season to replay (default 2025-26)")
+    sp.add_argument("--gws", nargs="*", type=int, help="specific gameweeks only")
+    sp.add_argument("--openfpl-every", type=int, default=4,
+                    help="run the (slow) OpenFPL ensemble every Nth gw")
+    sp.add_argument("--no-openfpl", action="store_true",
+                    help="skip the OpenFPL comparison entirely")
+    sp.add_argument("--retrain-minutes", action="store_true",
+                    help="force retraining the minutes classifier")
+    sp.set_defaults(func=cmd_backtest)
 
     sp = sub.add_parser("run", help="pull + build + predict")
     sp.add_argument("--gw", type=int, required=True)

@@ -56,6 +56,23 @@ def _live_json(path: str):
     return data
 
 
+def _live_json_soft(path: str):
+    """Like :func:`_live_json` but failure-tolerant: returns None instead of
+    raising, and caches the miss so it is not re-fetched for the TTL. Used for
+    per-entry endpoints that legitimately 404 (e.g. rivals without picks)."""
+    now = time.monotonic()
+    hit = _mem.get(path)
+    if hit and now - hit[0] < _TTL:
+        return hit[1]
+    try:
+        data = json.loads(get_text(f"{FPL_BASE}/{path}", use_cache=False,
+                                   retries=2))
+    except Exception:
+        data = None
+    _mem[path] = (now, data)
+    return data
+
+
 def bootstrap() -> dict:
     return _live_json("bootstrap-static/")
 
@@ -523,6 +540,16 @@ def build_projections(job_id: str | None, gws: list[int], *,
                     "(⟳ Data, top right) first.")
             bundle = _get_bundle()
             retrained, weight = resolve_blend(conn, season, blend)
+            from fpl_engine.pipeline import xpts_weight
+            xw = xpts_weight()
+            pens = None
+            if xw:
+                try:   # first-choice penalty takers from the live bootstrap
+                    pens = {e["id"]: e.get("penalties_order")
+                            for e in bootstrap()["elements"]
+                            if e.get("penalties_order")}
+                except Exception:
+                    pens = None
             for i, g in enumerate(todo):
                 if job_id:
                     jobs.progress(job_id, f"Projecting GW{g} "
@@ -530,7 +557,7 @@ def build_projections(job_id: str | None, gws: list[int], *,
                                   pct=0.05 + 0.6 * (i / max(1, len(todo))))
                 df = project.horizon_projections(
                     conn, season, [g], bundle=bundle, retrained=retrained,
-                    blend=weight)
+                    blend=weight, xpts_w=xw, penalty_takers=pens)
                 if df.empty:
                     continue
                 for r in df.itertuples():
@@ -769,21 +796,24 @@ def league_payload(league_id: int, gw: int | None = None,
     current = next((e["id"] for e in evs if e.get("is_current")), None)
     pick_gw = gw or current or (finished[-1] if finished else None)
 
+    # fetch every rival's picks + history concurrently: the FPL API can be
+    # slow on matchdays, so overlapping the waits matters far more than the
+    # (still throttled) request pacing
+    from concurrent.futures import ThreadPoolExecutor
+    rows = [r for r in results[:limit] if r.get("entry")]
+
+    def _fetch(r):
+        eid = r["entry"]
+        picks = (_live_json_soft(f"entry/{eid}/event/{pick_gw}/picks/")
+                 if pick_gw else None)
+        return r, picks, _live_json_soft(f"entry/{eid}/history/")
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        fetched = list(pool.map(_fetch, rows))
+
     entries = []
-    for r in results[:limit]:
-        eid = r.get("entry")
-        if not eid:
-            continue
-        picks = hist = None
-        if pick_gw:
-            try:
-                picks = _live_json(f"entry/{eid}/event/{pick_gw}/picks/")
-            except Exception:
-                picks = None
-        try:
-            hist = _live_json(f"entry/{eid}/history/")
-        except Exception:
-            hist = None
+    for r, picks, hist in fetched:
+        eid = r["entry"]
         eh = (picks or {}).get("entry_history") or {}
         entries.append({
             "entry": eid, "team": r.get("entry_name"),
@@ -797,6 +827,15 @@ def league_payload(league_id: int, gw: int | None = None,
                       for p in (picks or {}).get("picks", [])],
             "active_chip": (picks or {}).get("active_chip"),
             "chips_used": [c.get("name") for c in (hist or {}).get("chips", [])],
+            "history": [{
+                "gw": h.get("event"), "points": h.get("points"),
+                "total": h.get("total_points"),
+                "overall_rank": h.get("overall_rank"),
+                "transfers": h.get("event_transfers") or 0,
+                "hit_points": h.get("event_transfers_cost") or 0,
+                "bench_points": h.get("points_on_bench") or 0,
+                "value": (h.get("value") or 0) / 10.0,
+            } for h in (hist or {}).get("current", [])],
             "bank": (eh.get("bank") or 0) / 10.0,
             "value": (eh.get("value") or 0) / 10.0,
             "gw_points": eh.get("points"),

@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import hashlib
 import os
+import threading
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -23,18 +25,42 @@ except Exception:  # pragma: no cover - fallback path
 USER_AGENT = "fpl-engine/0.1 (+https://github.com/daniegr/OpenFPL)"
 _LAST_CALL: dict[str, float] = {}
 MIN_INTERVAL_S = 0.6  # be polite to free endpoints
+# The official FPL API is a large CDN-backed service; its own site fires
+# dozens of these calls per page, so a short interval is still polite.
+HOST_INTERVAL_S = {"fantasy.premierleague.com": 0.15}
 
 
 def utcnow_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+_THROTTLE_LOCK = threading.Lock()
+
+
 def _throttle(host: str) -> None:
-    last = _LAST_CALL.get(host, 0.0)
-    wait = MIN_INTERVAL_S - (time.monotonic() - last)
-    if wait > 0:
+    """Pace request *starts* per host; safe under concurrent callers."""
+    interval = HOST_INTERVAL_S.get(host, MIN_INTERVAL_S)
+    while True:
+        with _THROTTLE_LOCK:
+            now = time.monotonic()
+            wait = _LAST_CALL.get(host, 0.0) + interval - now
+            if wait <= 0:
+                _LAST_CALL[host] = now
+                return
         time.sleep(wait)
-    _LAST_CALL[host] = time.monotonic()
+
+
+def _permanent_http_error(exc: Exception) -> bool:
+    """True for definitive client errors (404 …) that retrying cannot fix.
+
+    429 (rate limited) and all 5xx stay retryable.
+    """
+    status = None
+    if requests is not None and isinstance(exc, requests.HTTPError):
+        status = getattr(exc.response, "status_code", None)
+    elif isinstance(exc, urllib.error.HTTPError):
+        status = exc.code
+    return status is not None and 400 <= status < 500 and status != 429
 
 
 def _cache_path(url: str) -> str:
@@ -91,8 +117,10 @@ def _request(method: str, url: str, data: dict | None, *, use_cache: bool,
                 with open(cache, "w", encoding="utf-8") as fh:
                     fh.write(text)
             return text
-        except Exception as e:  # noqa: BLE001 - retry all transient errors
+        except Exception as e:  # noqa: BLE001 - retry transient errors
             last_err = e
+            if _permanent_http_error(e):
+                raise RuntimeError(f"{method} failed ({e}): {url}") from e
             if attempt < retries - 1:
                 time.sleep(2 ** attempt)
     raise RuntimeError(f"{method} failed after {retries} attempts: {url}") from last_err

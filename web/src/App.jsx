@@ -76,7 +76,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="page">
+      <main className={`page ${tab === 'Mini League' ? 'wide' : ''}`}>
         {tab === 'Planner' && <Planner />}
         {tab === 'Projections' && <Projections />}
         {tab === 'Fixtures' && <Fixtures />}

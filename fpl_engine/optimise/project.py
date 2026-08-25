@@ -77,7 +77,8 @@ def preseason_priors(conn, season: str, profiles: dict) -> dict[int, float]:
 
 def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
                         decay: float = 0.85, retrained=None,
-                        blend: float = 0.0) -> pd.DataFrame:
+                        blend: float = 0.0, xpts_w: float | None = None,
+                        penalty_takers: dict[int, int] | None = None) -> pd.DataFrame:
     """Return a projection dataframe indexed by player_id.
 
     Columns: player_id, player, position, team, team_id, price, available,
@@ -87,8 +88,19 @@ def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
     ``fpl_engine.minutes`` (injury flags + start-pattern shifts relative to
     the trailing baseline the model features already assume). Players with
     no match history fall back to the plain availability multiplier.
+
+    ``xpts_w`` blends the component xPts engine into each gameweek's model EP:
+    final = (1-w)*openfpl + w*xpts (weight fitted by the backtest and stored
+    in models/xpts/blend.json — see ``fpl_engine.pipeline.xpts_weight``).
     """
     bundle = bundle or predict_mod.load_models()
+
+    minutes_bundle = None
+    if xpts_w:
+        from ..xpts import minutes_model
+        minutes_bundle = minutes_model.load()
+        if minutes_bundle[0] is None:
+            xpts_w = None      # xpts untrained -> degrade to pure OpenFPL
 
     # Static player attributes (price, club, availability) for the season.
     attrs = {r["player_id"]: dict(r) for r in conn.execute(
@@ -125,6 +137,23 @@ def horizon_projections(conn, season: str, gws: list[int], *, bundle=None,
         ep_by_gw[g] = {int(pid): float(ep) for pid, ep in
                        zip(merged["player_id"], merged["prediction"])
                        if pd.notna(pid)}
+        if xpts_w:
+            # blend the component engine in (availability handled below for
+            # both, so the engine runs without its own availability overlay)
+            from ..xpts import engine as xpts_engine
+            xdf = xpts_engine.xpts_predict_gw(
+                conn, season, g, use_availability=False,
+                minutes_bundle=minutes_bundle, penalty_takers=penalty_takers)
+            if not xdf.empty:
+                xmap = dict(zip(xdf["player_id"].astype(int),
+                                xdf["prediction"].astype(float)))
+                ep_by_gw[g] = {
+                    pid: (1 - xpts_w) * v + xpts_w * xmap.get(pid, v)
+                    for pid, v in ep_by_gw[g].items()}
+                # players OpenFPL has no sample for (e.g. new signings with no
+                # trailing windows) still get an xPts value
+                for pid, xv in xmap.items():
+                    ep_by_gw[g].setdefault(pid, xpts_w * xv)
 
     rows = []
     for pid, a in attrs.items():
