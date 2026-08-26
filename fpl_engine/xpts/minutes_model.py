@@ -31,8 +31,12 @@ FEATURES = ["starts_l5", "mins_l1", "mins_l3", "mins_l5", "avg_mins_when_played"
             # depth-chart & context signals (GW1 post-mortem: backups at new
             # clubs and promoted-club starters were the two biggest miss
             # classes — price rank inside a team+position encodes the depth
-            # chart, the flags mark when history is least transferable)
-            "price", "price_rank", "new_club", "career_apps", "season_idx",
+            # chart, the flags mark when history is least transferable).
+            # Raw price is deliberately NOT a feature: it adds a "fame" bias
+            # that overrides recent-minutes signal for benched stars; the
+            # rank alone carries the depth chart.
+            "price_rank", "new_club", "career_apps", "reserve_flag",
+            "season_idx",
             "is_gk", "is_def", "is_mid", "is_fwd"]
 LABELS = {0: "none", 1: "sub", 2: "full"}   # 0 min / 1-59 / 60+
 
@@ -43,9 +47,9 @@ def _frame(conn, seasons: list[str], before: str | None = None) -> pd.DataFrame:
     Rows are ordered per player by kickoff; every feature uses shifted
     (strictly prior) values only.
     """
-    q = ("SELECT pg.season, pg.player_id, pg.player_code, pg.fixture_id, "
+    q = ("SELECT pg.season, pg.gw, pg.player_id, pg.player_code, pg.fixture_id, "
          "pg.kickoff_utc, pg.minutes, pg.starts, pg.team_id, "
-         "p.position position, p.now_cost price "
+         "pg.price price_gw, p.position position, p.now_cost price "
          "FROM player_gw pg LEFT JOIN player p "
          "ON p.season=pg.season AND p.player_id=pg.player_id "
          "WHERE pg.season IN (%s)" % ",".join("?" * len(seasons)))
@@ -56,17 +60,14 @@ def _frame(conn, seasons: list[str], before: str | None = None) -> pd.DataFrame:
     df = pd.read_sql_query(q, conn, params=args)
     if df.empty:
         return df
-    df["price"] = pd.to_numeric(df["price"], errors="coerce")
-    # depth chart: price rank within that season's team+position (1 = priciest)
-    pr = pd.read_sql_query(
-        "SELECT season, player_id, team_id, position, now_cost FROM player "
-        "WHERE season IN (%s)" % ",".join("?" * len(seasons)),
-        conn, params=list(seasons))
-    pr["now_cost"] = pd.to_numeric(pr["now_cost"], errors="coerce")
-    pr["price_rank"] = pr.groupby(["season", "team_id", "position"])[
-        "now_cost"].rank(ascending=False, method="min")
-    df = df.merge(pr[["season", "player_id", "price_rank"]],
-                  on=["season", "player_id"], how="left")
+    # price at that gameweek (vaastav/FPL `value`), falling back to the
+    # season row's now_cost; point-in-time, so a summer price change never
+    # leaks backwards
+    df["price"] = pd.to_numeric(df["price_gw"], errors="coerce").fillna(
+        pd.to_numeric(df["price"], errors="coerce"))
+    # depth chart: price rank within that gw's team+position (1 = priciest)
+    df["price_rank"] = df.groupby(["season", "gw", "team_id", "position"])[
+        "price"].rank(ascending=False, method="min")
     df["minutes"] = df["minutes"].fillna(0)
     df["played"] = (df["minutes"] > 0).astype(float)
     df["started"] = df["starts"].fillna(0).astype(float)
@@ -99,6 +100,13 @@ def _frame(conn, seasons: list[str], before: str | None = None) -> pd.DataFrame:
     # history; how far into the current season this match is
     df["new_club"] = (g["team_id"].shift(1) != df["team_id"]).astype(float)
     df["career_apps"] = g.cumcount().astype(float)
+    # perennial reserve: long squad tenure without a single appearance. This
+    # separates the deep-squad phantom (never plays) from a debut row — both
+    # share since_last_app=99, and debuts DO often play.
+    _played_before = g["played"].transform(
+        lambda s: s.shift(1, fill_value=0.0).cumsum())
+    df["reserve_flag"] = ((_played_before == 0)
+                          & (df["career_apps"] >= 10)).astype(float)
     df["season_idx"] = df.groupby(["player_code", "season"],
                                   sort=False).cumcount().astype(float)
     for pos, col in (("GK", "is_gk"), ("DEF", "is_def"),
@@ -179,9 +187,12 @@ def predict_gw(conn, season: str, as_of: str, clf, meta, *,
         last["avg_mins_when_played"] = pm.reindex(last["player_code"]).values
         last["apps_l10"] = hist.groupby("player_code")["played"].apply(
             lambda s: s.tail(10).sum()).reindex(last["player_code"]).values
+        # never-played must match training's encoding (99), not the row
+        # count — otherwise a perennial reserve looks like a returning player
         gap = hist.groupby("player_code")["played"].apply(
-            lambda s: 0.0 if s.iloc[-1] > 0 else min(
-                99.0, float((s[::-1] == 0).cummin().sum())))
+            lambda s: 99.0 if s.sum() == 0 else (
+                0.0 if s.iloc[-1] > 0 else min(
+                    99.0, float((s[::-1] == 0).cummin().sum()))))
         last["since_last_app"] = gap.reindex(last["player_code"]).values
         tot = hist.groupby("player_code")["minutes"].agg(["sum", "count"])
         last["season_min_share"] = (tot["sum"] / (tot["count"] * 90.0)
@@ -194,8 +205,14 @@ def predict_gw(conn, season: str, as_of: str, clf, meta, *,
         feats = players.merge(latest, left_on="player_code", right_index=True,
                               how="left")
     # context features from the CURRENT player row (a summer signing's history
-    # rows all sit at his old club — depth chart must come from today's squad)
+    # rows all sit at his old club — depth chart must come from today's squad).
+    # Fall back to the last per-gw price seen in history: unpriced deep-squad
+    # players must not become NaN branches the training data never contains.
     feats["price"] = pd.to_numeric(feats["price"], errors="coerce")
+    if not hist.empty and "price" in hist:
+        last_price = hist.groupby("player_code")["price"].last()
+        feats["price"] = feats["price"].fillna(
+            feats["player_code"].map(last_price))
     feats["price_rank"] = feats.groupby(["team_id", "position"])["price"].rank(
         ascending=False, method="min")
     if "last_team_id" in feats:
@@ -206,6 +223,10 @@ def predict_gw(conn, season: str, as_of: str, clf, meta, *,
     counts = (hist.groupby("player_code").size() if not hist.empty
               else pd.Series(dtype=float))
     feats["career_apps"] = feats["player_code"].map(counts).fillna(0.0)
+    played_tot = (hist.groupby("player_code")["played"].sum() if not hist.empty
+                  else pd.Series(dtype=float))
+    feats["reserve_flag"] = ((feats["player_code"].map(played_tot).fillna(0.0) == 0)
+                             & (feats["career_apps"] >= 10)).astype(float)
     in_season = (hist[hist["season"] == season].groupby("player_code").size()
                  if not hist.empty else pd.Series(dtype=float))
     feats["season_idx"] = feats["player_code"].map(in_season).fillna(0.0)

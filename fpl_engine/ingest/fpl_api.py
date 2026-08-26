@@ -185,6 +185,12 @@ def _history_row(season, pid, code, name, h, fx) -> dict:
         "xg": _f(h.get("expected_goals")), "xa": _f(h.get("expected_assists")),
         "xgi": _f(h.get("expected_goal_involvements")),
         "xgc": _f(h.get("expected_goals_conceded")),
+        # per-gw price + raw DefCon stats (2025-26 rule era)
+        "price": _f(h.get("value")),
+        "defcon": _f(h.get("defensive_contribution")),
+        "tackles": _f(h.get("tackles")),
+        "cbi": _f(h.get("clearances_blocks_interceptions")),
+        "recoveries": _f(h.get("recoveries")),
     }
 
 

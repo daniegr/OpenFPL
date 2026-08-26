@@ -28,6 +28,9 @@ on:
     - cron: "0 8 * * 4"   # Thu 08:00 UTC — early planning
     - cron: "0 9 * * 6"   # Sat 09:00 UTC — capture late team news
 
+permissions:
+  contents: write        # publish the retrained models to a rolling release
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -43,17 +46,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r plug.txt -r requirements-pipeline.txt
 
-      # Persist only the static historical backfill (HTTP cache) between runs so
-      # it isn't re-downloaded each time. Live FPL data is always fetched fresh.
+      # Persist the static historical backfill (HTTP cache) and the SQLite DB
+      # between runs: the backfill isn't re-downloaded, and the Understat
+      # player pull stays incremental (only players who featured since).
+      # Live FPL data is always fetched fresh.
       - name: Restore historical-data cache
         uses: actions/cache@v4
         with:
-          path: data/cache
+          path: |
+            data/cache
+            data/fpl.sqlite
           key: fpl-hist-${{ github.run_id }}
           restore-keys: fpl-hist-
 
-      - name: Update data (fresh live + cached history) into SQLite
-        run: python -m fpl_engine pull --cache
+      - name: Update data (fresh live + cached history + Understat) into SQLite
+        run: python -m fpl_engine pull --cache --understat
 
       - name: Retrain per-position models (forward-in-time)
         run: python -m fpl_engine train
@@ -72,10 +79,21 @@ jobs:
           python -m fpl_engine optimise --entry "$ENTRY" --horizon 5 --blend "$BLEND" \
             | tee data/optimise_plan.txt
 
+      # The retrained models are published to a rolling release so local
+      # installs can pull them (python -m fpl_engine fetch-models / the web
+      # app's Data button) and blend them with OpenFPL.
+      - name: Publish retrained models (rolling release models-latest)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          (cd models && zip -qr ../retrained.zip retrained)
+          gh release view models-latest >/dev/null 2>&1 ||             gh release create models-latest --title "Latest retrained models"               --notes "Rolling release updated by the FPL refresh workflow."
+          gh release upload models-latest retrained.zip data/predictions_next.csv             data/optimise_plan.txt --clobber
+
       - uses: actions/upload-artifact@v4
         with:
           name: fpl-refresh
           path: |
             data/predictions_next.csv
             data/optimise_plan.txt
-            models/retrained/meta.json
+            models/retrained/

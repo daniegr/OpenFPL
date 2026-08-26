@@ -7,8 +7,11 @@ For each player and each of his team's fixtures in the target gameweek:
   E[assists] = xA90 · exposure · fixture attack scaler
   P(CS)      = P(60+) · exp(-λ_opponent)
   conceded   = E[floor(GA/2)] under GA ~ Poisson(λ_opponent), on-pitch share
-  saves      = E[floor(S/3)] under S ~ Poisson(saves90·exposure)
-  bonus/cards/residual = shrunk per-90 rates · exposure
+  saves      = E[floor(S/3)] under S ~ Poisson(saves90·exposure·opp scaler)
+  E[bonus]   = league per-position event coefficients · expected events
+               + the player's own bonus deviation rate · exposure
+  E[DefCon]  = threshold-crossing rate per 90 (raw counts, rule era) · exposure
+  cards/residual = shrunk per-90 rates · exposure (residual = leftover scraps)
 
 Every point value comes from config/scoring_rules_*.yaml — the scoring engine
 stays the single source of truth. Double gameweeks sum naturally over the
@@ -25,6 +28,8 @@ from .. import scoring
 from . import minutes_model, rates as rates_mod, team_model
 
 ATTACK_SCALER_CAP = (0.55, 1.75)
+SAVES_OPP_EXP = 0.35            # saves scale sublinearly with opponent threat
+SAVES_OPP_CAP = (0.75, 1.35)
 
 
 def _e_floor_div(lam: float, per: int, kmax: int = 12) -> float:
@@ -97,6 +102,7 @@ def xpts_predict_gw(conn, season: str, gw: int, *, as_of: str | None = None,
     mins = minutes_model.predict_gw(conn, season, as_of, clf, meta,
                                     use_availability=use_availability)
     rates = rates_mod.fit(conn, season, as_of, rules=rules)
+    bonus_coef = rates.attrs.get("bonus_coef", {})   # merge drops attrs
     df = mins.merge(rates.drop(columns=["position"]), on="player_id", how="left")
     team_of = {r["player_id"]: r["team_id"] for r in conn.execute(
         "SELECT player_id, team_id FROM player WHERE season=?", (season,))}
@@ -115,6 +121,7 @@ def xpts_predict_gw(conn, season: str, gw: int, *, as_of: str | None = None,
     p_cs = rules["clean_sheet"]
     p_app_any, p_app_60 = rules["appearance"]["played_any"], rules["appearance"]["played_60"]
     gc_per, gc_pts = rules["goals_conceded"]["per"], rules["goals_conceded"]["points"]
+    dc_pts = (rules.get("defensive_contribution") or {}).get("points", 0)
 
     rows = []
     for r in df.itertuples():
@@ -139,9 +146,16 @@ def xpts_predict_gw(conn, season: str, gw: int, *, as_of: str | None = None,
                 total += (gc_pts * _e_floor_div(lam_against * max(p_play, 0.0),
                                                 gc_per))
             if pos == "GK":
-                total += _e_floor_div((r.saves90 or 0.0) * exposure, rules["saves_per_point"])
-            total += (r.bonus90 or 0.0) * exposure
+                sv = float(np.clip((lam_against / league) ** SAVES_OPP_EXP,
+                                   *SAVES_OPP_CAP))
+                total += _e_floor_div((r.saves90 or 0.0) * exposure * sv,
+                                      rules["saves_per_point"])
+            bc = bonus_coef.get(pos)
+            if bc:   # E[bonus] from expected events + player deviation
+                total += bc[0] * g + bc[1] * a + bc[2] * cs + bc[3] * p_play
+            total += (r.bonus_resid90 or 0.0) * exposure
             total += (r.yellow_cards90 or 0.0) * exposure * rules["card"]["yellow"]
+            total += (r.defcon_cross90 or 0.0) * exposure * dc_pts
             total += (r.residual90 or 0.0) * exposure
             total += (r.p_sub or 0.0) * p_app_any + (r.p_full or 0.0) * p_app_60
         rows.append({

@@ -42,6 +42,8 @@ own_goal: -2
 # Threshold-crossing event: award `points` once combined defensive actions
 # reach `threshold`. Verify exact thresholds against the official rules page.
 defensive_contribution:
+  since: "2025-26"     # first season the rule existed; models must not
+                       # estimate DefCon rates from earlier seasons
   points: 2
   threshold:
     DEF: 10            # clearances + blocks + interceptions + tackles

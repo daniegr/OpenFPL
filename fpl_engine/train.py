@@ -148,7 +148,9 @@ def train(conn, *, seasons: list[str] | None = None, valid_season: str | None = 
         metrics[pos] = m
         progress.step(f"    {pos}: trained on {len(tr)} rows  {m}")
 
+    from .http import utcnow_iso
     meta = {"seasons": seasons, "valid_season": valid_season, "device": device,
+            "trained_at": utcnow_iso(),
             "params": XGB_PARAMS, "metrics": metrics,
             "features": {p: list(bundle[3][p]) for p in POSITIONS}}
     with open(os.path.join(out_dir, "meta.json"), "w") as fh:

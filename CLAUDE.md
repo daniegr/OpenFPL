@@ -82,9 +82,9 @@ stays the single source of truth):
 | Module | Component |
 |---|---|
 | `xpts/team_model.py` | time-decayed Poisson attack/defence (fit on `team_match`, teams matched across seasons by `code`, goals blended with xG, promoted clubs shrunk to a below-average prior) |
-| `xpts/minutes_model.py` | XGBoost P(0 / 1-59 / 60+ minutes) from start-pattern features; cached in `models/xpts/`; live availability (status/chance_next) is applied on top |
-| `xpts/rates.py` | empirical-Bayes-shrunk per-90 rates (xG, xA, saves, bonus, cards) + a **residual rate** = actual points minus reconstructed points, which absorbs DefCon (no raw defcon stats exist in the DB) |
-| `xpts/engine.py` | E[points] per player per gw: exposure x rates x fixture scalers, P(CS)=P(60+)*exp(-λ_opp), Poisson floor-division expectations for conceded/saves; DGWs sum over fixtures |
+| `xpts/minutes_model.py` | XGBoost P(0 / 1-59 / 60+ minutes) from start-pattern + depth-chart features (per-gw price rank inside team+position — raw price is deliberately excluded as a fame bias); cached in `models/xpts/`; live availability (status/chance_next) is applied on top |
+| `xpts/rates.py` | empirical-Bayes-shrunk per-90 rates (xG, xA, saves, cards), an event-conditional **bonus model** (league per-position WLS `bonus ~ goals+assists+cs`; players keep only their deviation as a flat rate, so E[bonus] scales with the fixture), a **DefCon threshold-crossing rate** (raw `defcon` counts are ingested from vaastav/FPL for the rule era — `defensive_contribution.since` in the scoring YAML; rate = shrunk crossings per 90) + a **residual rate** = actual points minus full reconstruction (including actual DefCon), i.e. genuinely unmodelled scraps only. Player histories get an extra ×`SEASON_BREAK_DECAY` per season boundary so an outlier season is not carried whole across a summer |
+| `xpts/engine.py` | E[points] per player per gw: exposure x rates x fixture scalers, P(CS)=P(60+)*exp(-λ_opp), Poisson floor-division expectations for conceded/saves (GK saves scale sublinearly with opponent threat), E[bonus] from the league event coefficients applied to the player's own expected events; DGWs sum over fixtures |
 | `backtest.py` | forward-in-time replay of a past season scoring xpts vs OpenFPL vs naive baselines (Spearman, precision@20, captain pts, RMSE); fits the blend weight on the first half of the season, evaluates on the second, writes `models/xpts/blend.json` |
 
 `predict`/`optimise`/the web app automatically blend xPts with OpenFPL using
@@ -135,7 +135,7 @@ Run: `python -m pytest tests/ -q`
   previous season; current-season players are fetched live, the rest cached.
   Understat features are NaN when it is unreachable; the models tolerate this
   via `np.nan_to_num`. To limit the damage, FPL's own (Opta) expected stats —
-  stored per match in `player_gw.xg/xa/xgi/xgc` and `team_match.xg/xga` (team
+  stored per match in `player_gw.xg/xa/xgi/xgc` (plus per-gw `price` and raw DefCon counts `defcon/tackles/cbi/recoveries` from 2025-26 on) and `team_match.xg/xga` (team
   xG = summed player xG, xGA = opponent's) — stand in for the Understat
   metrics they map onto (`player xg/xa`, `team/opponent xg/xga`) whenever the
   Understat history is empty. Understat data takes precedence when present.

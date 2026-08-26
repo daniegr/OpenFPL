@@ -112,6 +112,11 @@ CREATE TABLE IF NOT EXISTS player_gw (
     xa              REAL,                -- FPL expected assists
     xgi             REAL,                -- FPL expected goal involvements
     xgc             REAL,                -- FPL expected goals conceded (on pitch)
+    price           REAL,                -- player price (0.1m units) at that gw
+    defcon          REAL,                -- raw defensive-contribution count
+    tackles         REAL,
+    cbi             REAL,                -- clearances+blocks+interceptions
+    recoveries      REAL,
     PRIMARY KEY (season, gw, source, player_id, fixture_id)
 );
 CREATE INDEX IF NOT EXISTS ix_player_gw_code ON player_gw(player_code, season, gw);
@@ -209,6 +214,8 @@ _COLUMN_MIGRATIONS = {
     ],
     "player_gw": [
         ("xg", "REAL"), ("xa", "REAL"), ("xgi", "REAL"), ("xgc", "REAL"),
+        ("price", "REAL"), ("defcon", "REAL"), ("tackles", "REAL"),
+        ("cbi", "REAL"), ("recoveries", "REAL"),
     ],
     "team_match": [
         ("xg", "REAL"), ("xga", "REAL"),

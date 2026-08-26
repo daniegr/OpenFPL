@@ -103,6 +103,12 @@ def ingest_season(conn, season: str, *, use_cache: bool = True) -> dict:
             "xg": _num(m.get("expected_goals")), "xa": _num(m.get("expected_assists")),
             "xgi": _num(m.get("expected_goal_involvements")),
             "xgc": _num(m.get("expected_goals_conceded")),
+            # per-gw price + raw DefCon stats (present from 2025-26; None before)
+            "price": _num(m.get("value")),
+            "defcon": _num(m.get("defensive_contribution")),
+            "tackles": _num(m.get("tackles")),
+            "cbi": _num(m.get("clearances_blocks_interceptions")),
+            "recoveries": _num(m.get("recoveries")),
         })
     n = db.upsert(conn, "player_gw", rows)
 
