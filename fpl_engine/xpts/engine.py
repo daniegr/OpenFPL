@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from .. import scoring
-from . import minutes_model, rates as rates_mod, team_model
+from . import minutes_model, odds_model, rates as rates_mod, team_model
 
 ATTACK_SCALER_CAP = (0.55, 1.75)
 SAVES_OPP_EXP = 0.35            # saves scale sublinearly with opponent threat
@@ -78,7 +78,8 @@ def _gw_fixtures(conn, season: str, gw: int) -> list:
 def xpts_predict_gw(conn, season: str, gw: int, *, as_of: str | None = None,
                     use_availability: bool = True,
                     minutes_bundle=None, rules: dict | None = None,
-                    penalty_takers: dict[int, int] | None = None) -> pd.DataFrame:
+                    penalty_takers: dict[int, int] | None = None,
+                    odds_weight: float | None = None) -> pd.DataFrame:
     """Expected points per player for one gameweek (point-in-time at as_of).
 
     Returns player_id-indexed frame with the prediction and its components.
@@ -108,10 +109,20 @@ def xpts_predict_gw(conn, season: str, gw: int, *, as_of: str | None = None,
         "SELECT player_id, team_id FROM player WHERE season=?", (season,))}
     df["team_id"] = df["player_id"].map(team_of)
 
-    # per-team fixture list: (λ_for, λ_against)
+    # per-team fixture list: (λ_for, λ_against). Market odds, where stored,
+    # are blended into the team-model rates — the market prices team news and
+    # motivation that trailing form cannot see.
+    ow = odds_model.ODDS_WEIGHT if odds_weight is None else float(odds_weight)
+    omap = (odds_model.fixture_odds_map(
+                conn, season, [f["fixture_id"] for f in fixtures])
+            if ow > 0 else {})
     team_fixtures: dict[int, list[tuple[float, float]]] = {}
     for f in fixtures:
         lh, la = tm.fixture(f["hcode"], f["acode"])
+        od = omap.get(f["fixture_id"])
+        if od:
+            lh = (1 - ow) * lh + ow * od[0]
+            la = (1 - ow) * la + ow * od[1]
         team_fixtures.setdefault(f["team_h"], []).append((lh, la))
         team_fixtures.setdefault(f["team_a"], []).append((la, lh))
     league = max(1e-6, tm.league_rate)

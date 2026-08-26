@@ -60,6 +60,8 @@ jobs:
           restore-keys: fpl-hist-
 
       - name: Update data (fresh live + cached history + Understat) into SQLite
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}   # optional: live odds blend
         run: python -m fpl_engine pull --cache --understat
 
       - name: Retrain per-position models (forward-in-time)

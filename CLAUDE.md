@@ -85,6 +85,8 @@ stays the single source of truth):
 | `xpts/minutes_model.py` | XGBoost P(0 / 1-59 / 60+ minutes) from start-pattern + depth-chart features (per-gw price rank inside team+position — raw price is deliberately excluded as a fame bias); cached in `models/xpts/`; live availability (status/chance_next) is applied on top |
 | `xpts/rates.py` | empirical-Bayes-shrunk per-90 rates (xG, xA, saves, cards), an event-conditional **bonus model** (league per-position WLS `bonus ~ goals+assists+cs`; players keep only their deviation as a flat rate, so E[bonus] scales with the fixture), a **DefCon threshold-crossing rate** (raw `defcon` counts are ingested from vaastav/FPL for the rule era — `defensive_contribution.since` in the scoring YAML; rate = shrunk crossings per 90) + a **residual rate** = actual points minus full reconstruction (including actual DefCon), i.e. genuinely unmodelled scraps only. Player histories get an extra ×`SEASON_BREAK_DECAY` per season boundary so an outlier season is not carried whole across a summer |
 | `xpts/engine.py` | E[points] per player per gw: exposure x rates x fixture scalers, P(CS)=P(60+)*exp(-λ_opp), Poisson floor-division expectations for conceded/saves (GK saves scale sublinearly with opponent threat), E[bonus] from the league event coefficients applied to the player's own expected events; DGWs sum over fixtures |
+| `xpts/odds_model.py` | betting odds → implied Poisson goal rates: de-margin 1X2 (+ over/under 2.5) odds, invert to (λ_home, λ_away), blend into the team model's fixture rates with `ODDS_WEIGHT` (0.85; fitted by backtest sweep on 2024-25 + 2025-26 — improves active-player rank and captain picks, 0 disables) |
+| `ingest/odds.py` | two free odds sources into `match_odds`: football-data.co.uk CSVs (no key; historical + in-season, early-snapshot `Avg` columns preferred over closing for point-in-time honesty) and The Odds API upcoming fixtures (`$ODDS_API_KEY`, free tier — one call = 2 credits of 500/month). Team names resolve via explicit maps and fail loud |
 | `backtest.py` | forward-in-time replay of a past season scoring xpts vs OpenFPL vs naive baselines (Spearman, precision@20, captain pts, RMSE); fits the blend weight on the first half of the season, evaluates on the second, writes `models/xpts/blend.json` |
 
 `predict`/`optimise`/the web app automatically blend xPts with OpenFPL using
@@ -148,6 +150,11 @@ Run: `python -m pytest tests/ -q`
 * **Clubs with no top-flight match log** (promoted) borrow a pooled prior from
   the previous season's relegated clubs for team/opponent features instead of
   NaN→0; clubs are matched across seasons by FPL's stable `team.code`.
+* **Odds timing**: football-data's early-snapshot odds are collected days
+  before kickoff — honest for a prediction made before the gameweek's first
+  kickoff, though matches later in the gameweek carry a little extra market
+  information. The Odds API covers upcoming fixtures only on the free tier
+  (its historical endpoints are paid), so backtests rely on football-data.
 * **League-rank / status-rank** columns are AM-only in OpenFPL and left NaN for
   player rows (matching the reference samples).
 
@@ -175,7 +182,8 @@ session is slow (model inference per GW) and later ones are fast.
 
 ```
 python -m fpl_engine init-db
-python -m fpl_engine pull            # FPL live + vaastav backfill -> SQLite (free)
+python -m fpl_engine pull            # FPL live + vaastav backfill + odds -> SQLite (free;
+                                     #   set $ODDS_API_KEY for upcoming-fixture odds)
 python -m fpl_engine predict --gw 1        # end-to-end predictions
 python -m fpl_engine run --gw 1            # pull + build + predict
 python -m fpl_engine optimise --entry 883566 --horizon 5   # transfers / squad

@@ -31,7 +31,32 @@ def pull(conn, *, season: str | None = None, use_cache: bool = False,
         summary["understat"] = _pull_understat(conn, season, use_cache=use_cache)
     else:
         summary["understat"] = "skipped/unavailable (FPL-only degradation)"
+    summary["odds"] = _pull_odds(conn, season)
     return summary
+
+
+def _pull_odds(conn, season: str) -> dict | str:
+    """Best-effort odds pull (an enhancement, never a hard dependency).
+
+    football-data.co.uk needs no key and covers played matches of the current
+    season; The Odds API (``$ODDS_API_KEY``) adds the upcoming fixtures the
+    engine actually predicts. Failures degrade to the pure team model."""
+    import os
+    from .ingest import odds as odds_ingest
+    out = {}
+    try:      # fresh fetch: the season CSV grows every week
+        out["football_data"] = odds_ingest.ingest_football_data(
+            conn, [season], use_cache=False)
+    except Exception as e:  # noqa: BLE001 - odds must never break a pull
+        out["football_data"] = f"skipped ({e})"
+    if os.environ.get("ODDS_API_KEY"):
+        try:
+            out["odds_api"] = odds_ingest.ingest_odds_api(conn, season)
+        except Exception as e:  # noqa: BLE001
+            out["odds_api"] = f"skipped ({e})"
+    else:
+        out["odds_api"] = "skipped (ODDS_API_KEY not set)"
+    return out
 
 
 def _needs_refresh(us_latest: str | None, fpl_latest: str | None) -> bool:

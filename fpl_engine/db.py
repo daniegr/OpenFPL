@@ -122,6 +122,22 @@ CREATE TABLE IF NOT EXISTS player_gw (
 CREATE INDEX IF NOT EXISTS ix_player_gw_code ON player_gw(player_code, season, gw);
 
 -- Per-team-per-match results (drives team/opponent goals + league-rank features).
+CREATE TABLE IF NOT EXISTS match_odds (
+    season          TEXT NOT NULL,
+    fixture_id      INTEGER NOT NULL,
+    source          TEXT NOT NULL,       -- 'football-data' | 'odds-api'
+    kickoff_date    TEXT,
+    home_id         INTEGER,
+    away_id         INTEGER,
+    p_home          REAL,                -- de-margined outcome probabilities
+    p_draw          REAL,
+    p_away          REAL,
+    p_over25        REAL,                -- de-margined P(total goals > 2.5)
+    lam_home        REAL,                -- Poisson goal rates implied by the odds
+    lam_away        REAL,
+    PRIMARY KEY (season, fixture_id)
+);
+
 CREATE TABLE IF NOT EXISTS team_match (
     season       TEXT NOT NULL,
     team_id      INTEGER NOT NULL,
